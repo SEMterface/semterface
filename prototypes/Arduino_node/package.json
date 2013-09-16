@@ -1,0 +1,21 @@
+{
+  "name": "Arduino_node",
+  "version": "0.0.0",
+  "description": "A test to control arduino over node",
+  "main": "server.js",
+  "dependencies": {
+    "app": "~0.1.0",
+    "express": "~3.4.0",
+    "interval": "~0.0.8",
+    "port": "~0.7.0",
+    "serial": "~0.0.6",
+    "serialport": "~1.1.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "BSD"
+}

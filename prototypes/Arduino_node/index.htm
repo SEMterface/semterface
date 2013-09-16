@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>Online Lightswitch</title>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>
+      $(function() {
+        $("#on").click(function() {
+          $.ajax('/on');
+        });
+ 
+        $("#off").click(function() {
+          $.ajax('/off');
+        });
+ 
+        $("#blink").click(function() {
+          $.ajax('/blink');
+        });
+      });
+    </script>
+    <style>
+      button {
+        font-size: 20pt;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="on">On!</button>
+    <button id="off">Off!</button>
+    <button id="blink">Blink!</button>
+  </body>
+</html>
