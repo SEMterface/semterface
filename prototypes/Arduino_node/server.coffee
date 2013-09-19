@@ -1,7 +1,7 @@
 {SerialPort} = require('serialport')
 fs = require 'fs'
  
-port = '/dev/tty.usbserial-A800ewsy'
+port = '/dev/tty.usbmodem1d11'
 express = require 'express'
 serial = null
 interval = null
@@ -14,6 +14,18 @@ turnOn = =>
 turnOff = =>
   lightOn = false
   serial.write new Buffer([48])
+
+sendA = =>
+  serial.write new Buffer([97])
+  
+sendS = =>
+  serial.write new Buffer([115])
+  
+sendD = =>
+  serial.write new Buffer([100])
+  
+sendW = =>
+  serial.write new Buffer([119])
  
 toggle = =>
   if lightOn
@@ -39,6 +51,26 @@ app.get '/off', (req, res) ->
 app.get '/blink', (req, res) ->
   clearInterval interval
   interval = setInterval toggle, 500
+  res.end()
+
+app.get '/a', (req, res) ->
+  clearInterval interval
+  sendA()
+  res.end()
+
+app.get '/s', (req, res) ->
+  clearInterval interval
+  sendS()
+  res.end()
+  
+app.get '/d', (req, res) ->
+  clearInterval interval
+  sendD()
+  res.end()
+  
+app.get '/w', (req, res) ->
+  clearInterval interval
+  sendW()
   res.end()
  
 console.log "Starting..."

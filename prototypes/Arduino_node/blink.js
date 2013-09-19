@@ -7,7 +7,7 @@
 
   fs = require('fs');
 
-  port = '/dev/tty.usbserial-A800ewsy';
+  port = '/dev/tty.usbmodem1d11';
 
   serial = null;
 
