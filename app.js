@@ -8,6 +8,7 @@ var routes = require('./routes');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
+var SerialPort = require("serialport").SerialPort;
 
 var app = express();
 var server = http.createServer(app);
@@ -38,5 +39,5 @@ server.listen(app.get('port'), function(){
 var io = require("socket.io").listen(server);
 
 io.sockets.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
+  socket.emit('news', { hello: 'Things appear to be turned on.' });
 });

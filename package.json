@@ -1,5 +1,5 @@
 {
-  "name": "application-name",
+  "name": "SEMTerface",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -8,6 +8,7 @@
   "dependencies": {
     "express": "3.4.0",
     "jade": "*",
-    "socket.io": "latest"
+    "socket.io": "latest",
+    "serialport": "latest"
   }
 }
