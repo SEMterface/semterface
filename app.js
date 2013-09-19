@@ -8,10 +8,12 @@ var routes = require('./routes');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
+var fs = require('fs');
 var SerialPort = require("serialport").SerialPort;
 
 var app = express();
 var server = http.createServer(app);
+var portName = '/dev/tty.usbserial-A800ewsy';
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -38,18 +40,33 @@ server.listen(app.get('port'), function(){
 
 var io = require("socket.io").listen(server);
 
+fs.stat(portName, function(err, stats) {
+    if (err != null) {
+      console.log("Couldn't stat " + portName);
+      process.exit();
+    }
+    console.log("Serial session started.");
+    serial = new SerialPort(portName, {
+      baudrate: 9600
+    });
+  });
+
 io.sockets.on('connection', function (socket) {
   socket.emit('news', { hello: 'Things appear to be turned on.' });
   socket.on('up', function (data) {
         console.log("go up");
+        serial.write(new Buffer([119]));
     });
   socket.on('down', function (data) {
         console.log("go down");
+        serial.write(new Buffer([115]));
     });
   socket.on('right', function (data) {
         console.log("go right");
+        serial.write(new Buffer([100]));
     });
   socket.on('left', function (data) {
         console.log("go left");
+        serial.write(new Buffer([97]));
     });
 });
