@@ -40,4 +40,16 @@ var io = require("socket.io").listen(server);
 
 io.sockets.on('connection', function (socket) {
   socket.emit('news', { hello: 'Things appear to be turned on.' });
+  socket.on('up', function (data) {
+        console.log("go up");
+    });
+  socket.on('down', function (data) {
+        console.log("go down");
+    });
+  socket.on('right', function (data) {
+        console.log("go right");
+    });
+  socket.on('left', function (data) {
+        console.log("go left");
+    });
 });
