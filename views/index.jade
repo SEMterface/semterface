@@ -3,11 +3,16 @@ extends layout
 block content
   h1 SEMTerface
   p Welcome to SEMTerface
-  input#w(type='button', value='W')
-  input#a(type='button', value='A')
-  input#s(type='button', value='S')
-  input#d(type='button', value='D')
+  div#remotesVideos
+  video#localVideo(height='100')
+  
+  div
+    button#w(type='button') W
+    button#a(type='button') A
+    button#s(type='button') S
+    button#d(type='button') D
 
-  h2 Client settings
-  input#server(type='button', value='I am the server')
-  input#server(type='button', value='I am a client')
+  footer
+    script(src='/socket.io/socket.io.js')
+    script(src='http://simplewebrtc.com/latest.js')
+    script(src='/javascripts/message.js')
