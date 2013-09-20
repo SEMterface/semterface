@@ -9,16 +9,16 @@ var socket = io.connect();
     });
 
 upButton.onclick = function() {
-    socket.emit('up', { message: "text" });
+    socket.emit('up');
 };
 downButton.onclick = function() {
-    socket.emit('down', { message: "text" });
+    socket.emit('down');
 };
 rightButton.onclick = function() {
-    socket.emit('right', { message: "text" });
+    socket.emit('right');
 };
 leftButton.onclick = function() {
-    socket.emit('left', { message: "text" });
+    socket.emit('left');
 };
 
 window.addEventListener('keydown',this.check,false);
