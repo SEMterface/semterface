@@ -3,6 +3,12 @@ SEMterface
 
 This is the home for a web based interface for the Jeol JXA-6400 SEM in SRTC 169.  Currently in prototyping stages.
 
+## The story so far
+
+So far, we are controlling the SEM using a man in the middle attack using an arduino.  From here, we use sockets.io, node.js, and webRTC to remotely view and control the microscope. 
+
+At this point we probably need to put the signaling server onto a web server of its own and delegate the control server to talk out of the network via webRTC's NAT busting magic, that or negotiate with OIT to get some ports forwarded.
+
 ### Quick links
 - [Python](http://www.python.org/)
 - [PyQt4](http://www.riverbankcomputing.co.uk/software/pyqt/download)
