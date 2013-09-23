@@ -24,22 +24,23 @@ fs.stat(portName, function(err, stats) {
   });
 
 socket.on('control', function(data) {
-    switch.
-})
-
-socket.on('up', function () {
-        console.log("go up");
-        serial.write(new Buffer([119]));
-    });
-  socket.on('down', function () {
-        console.log("go down");
-        serial.write(new Buffer([115]));
-    });
-  socket.on('right', function () {
-        console.log("go right");
-        serial.write(new Buffer([100]));
-    });
-  socket.on('left', function () {
-        console.log("go left");
-        serial.write(new Buffer([97]));
-    });
+    console.log('i got a message')
+    switch(data.move) {
+    case 'up':
+    console.log("go up");
+    serial.write(new Buffer([119]));
+    break;
+    case 'down':
+    console.log("go down");
+    serial.write(new Buffer([115]))
+    break;
+    case 'right':
+    console.log("go right");
+    serial.write(new Buffer([100]));
+    break;
+    case 'left':
+    console.log("go left");
+    serial.write(new Buffer([97]));
+    break;
+  }
+});

@@ -38,17 +38,6 @@ server.listen(app.get('port'), function(){
 
 var io = require("socket.io").listen(server);
 
-fs.stat(portName, function(err, stats) {
-    if (err != null) {
-      console.log("Couldn't stat " + portName);
-      process.exit();
-    }
-    console.log("Serial session started.");
-    serial = new SerialPort(portName, {
-      baudrate: 9600
-    });
-  });
-
 io.sockets.on('connection', function (socket) {
   socket.emit('news', { hello: 'Things appear to be turned on.' });
   socket.on('send', function(data) {
