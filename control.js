@@ -2,12 +2,7 @@ var io = require('socket.io/node_modules/socket.io-client');
 var SerialPort = require("serialport").SerialPort;
 var fs = require('fs');
 
-socket = io.connect('http://localhost:3000');
-
-socket.on('connect',function() {
-    socket.emit("test","foo");
-    console.log('I emit')
-}); 
+socket = io.connect('localhost:3');
 
 //var portName = '/dev/tty.usbserial-A800ewsy'; // My Arduino
 var portName = '/dev/tty.usbmodem3d11'; // SEM Port
@@ -24,7 +19,7 @@ fs.stat(portName, function(err, stats) {
   });
 
 socket.on('control', function(data) {
-    console.log('i got a message')
+    console.log('i got a message');
     switch(data.move) {
     case 'up':
     console.log("go up");
