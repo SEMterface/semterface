@@ -20,3 +20,17 @@ At this point we probably need to put the signaling server onto a web server of 
 
 ## Prototypes
 [Arduino_Node](http://brandontilley.com/2012/03/02/controlling-an-arduino-from-nodejs.html) Sending commands to the Arduino over the internet using a node.js server
+
+## Deploy Procedure Notes
+
+- Installed Chrome and Firefox
+- Installed Git (Added to path via installer option)
+- Installed Node.js 0.10.19 (adds node to path via installer option)
+- Installed Arduino Software (v 1.0.5 windows installer, installs the driver neede for the uno.)
+- Cloned this repo, and `npm install`ed inside of it.  Hang up on nodegyp, as we likely need .net and stuff installed per the serial module requirements.
+- Installing visual studio express 2012 (This takes super duper long)
+- Registered this copy to my MS account.  Emailed a copy of the activation key to Erik.
+- Installing python 2.7.5, listed on the serial module readme.
+- Appended `;C:\Python27\` to my *System* path.  I used Right click computer -> Advanced System settings (in side bar) -> Advanced Tab -> Enviroment Variables -> Modified `Path` in the System Variables List
+
+

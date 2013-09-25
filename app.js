@@ -9,7 +9,9 @@ var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 var fs = require('fs');
-var SerialPort = require("serialport").SerialPort;
+// Node weirdness. See: http://stackoverflow.com/questions/14550880/serialport-has-no-method-list
+var serialport = require('serialport');
+var SerialPort = serialport.SerialPort;
 
 var app = express();
 var server = http.createServer(app);
