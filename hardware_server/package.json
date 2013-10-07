@@ -1,0 +1,14 @@
+{
+  "name": "Hardware Control",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node control.js"
+  },
+  "dependencies": {
+    "express": "3.4.0",
+    "jade": "*",
+    "socket.io": "latest",
+    "serialport": "latest"
+  }
+}

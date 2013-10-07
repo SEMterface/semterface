@@ -4,8 +4,8 @@ var rightButton = document.getElementById("d");
 var leftButton = document.getElementById("a");
 
 var socket = io.connect();
-    socket.on('news', function (data) {
-      console.log(data);
+socket.on('news', function (data) {
+    console.log(data);
     });
 
 upButton.onclick = function() {
