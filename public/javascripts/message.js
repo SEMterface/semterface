@@ -4,21 +4,24 @@ var rightButton = document.getElementById("d");
 var leftButton = document.getElementById("a");
 
 var socket = io.connect();
-    socket.on('news', function (data) {
-      console.log(data);
+socket.on('news', function (data) {
+    console.log(data);
     });
+socket.on('control', function (data) {
+    console.log(data);
+});
 
 upButton.onclick = function() {
-    socket.emit('up');
+    socket.emit('send', { move: 'up'});
 };
 downButton.onclick = function() {
-    socket.emit('down');
+    socket.emit('send', { move: 'down'});
 };
 rightButton.onclick = function() {
-    socket.emit('right');
+    socket.emit('send', { move: 'right'});
 };
 leftButton.onclick = function() {
-    socket.emit('left');
+    socket.emit('send', { move: 'left'});
 };
 
 window.addEventListener('keydown',this.check,false);

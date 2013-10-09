@@ -8,12 +8,14 @@ var routes = require('./routes');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
+var SerialPort = require('serialport').SerialPort;
+var ioclient = require('socket.io-client');
 
 var app = express();
 var server = http.createServer(app);
 
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3001);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(express.favicon());
@@ -35,12 +37,33 @@ server.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
-var io = require("socket.io").listen(server);
+socket = ioclient.connect('http://localhost:3000/');  
+socket.on('news', function (data) {
+      console.log(data);
+});
 
-io.sockets.on('connection', function (socket) {
-  socket.emit('news', { hello: 'Things appear to be turned on.' });
-  socket.on('send', function(data) {
+var portName = '/dev/tty.usbserial-A800ewsy'; // My Arduino
+//var portName = '/dev/tty.usbmodem3d11'; // SEM Port
+
+console.log("Serial session started.");
+serial = new SerialPort(portName, {
+    baudrate: 9600
+});
+
+socket.on('control', function (data) {
     console.log(data);
-    io.sockets.emit('control', data);
-  });
+    switch(data.move) {
+    case 'up':
+    serial.write(new Buffer([119]));
+    break;
+    case 'down':
+    serial.write(new Buffer([115]))
+    break;
+    case 'right':
+    serial.write(new Buffer([100]));
+    break;
+    case 'left':
+    serial.write(new Buffer([97]));
+    break;  
+  }
 });
