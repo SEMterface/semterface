@@ -12,7 +12,10 @@
   "dependencies": {
     "express": "3.4.0",
     "jade": "*",
-    "socket.io": "latest",
-    "serialport": "latest"
+    "socket.io": "latest"
+  },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.2.x"
   }
 }
