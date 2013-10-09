@@ -7,6 +7,9 @@ var socket = io.connect();
 socket.on('news', function (data) {
     console.log(data);
     });
+socket.on('control', function (data) {
+    console.log(data);
+});
 
 upButton.onclick = function() {
     socket.emit('send', { move: 'up'});
