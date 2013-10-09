@@ -37,7 +37,8 @@ server.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
-socket = ioclient.connect('http://localhost:3000/');  
+//socket = ioclient.connect('http://semterface.herokuapp.com/');  
+socket = ioclient.connect('http://semterface.aws.af.cm/');
 socket.on('news', function (data) {
       console.log(data);
 });
