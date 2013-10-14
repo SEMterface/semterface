@@ -1,6 +1,6 @@
 extends layout
 
-block content
+block append content
   h1 SEMTerface
   p Welcome to SEMTerface
   div#remotesVideos
@@ -11,8 +11,3 @@ block content
     button#a(type='button') A
     button#s(type='button') S
     button#d(type='button') D
-
-  footer
-    script(src='/socket.io/socket.io.js')
-    script(src='http://simplewebrtc.com/latest.js')
-    script(src='/javascripts/message.js')
