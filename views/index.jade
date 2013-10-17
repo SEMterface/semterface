@@ -1,13 +1,12 @@
 extends layout
 
 block append content
-  h1 SEMTerface
-  p Welcome to SEMTerface
-  div#remotesVideos
-  video#localVideo(height='100')
+  div#remotesVideos(class='center')
+  video#localVideo(height='100', class='center')
   
-  div
+  div(class='center')
     button#w(type='button') W
+  div#buttons(class='center')
     button#a(type='button') A
     button#s(type='button') S
     button#d(type='button') D
