@@ -1,6 +1,8 @@
 SEMterface
 ==========
 
+[![Dependency Status](https://gemnasium.com/bcomnes/SEMterface.png)](https://gemnasium.com/bcomnes/SEMterface)
+
 This is the home for a web based interface for the Jeol JXA-6400 SEM in SRTC 169.  Currently in prototyping stages.
 
 ## The story so far
