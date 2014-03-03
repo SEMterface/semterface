@@ -11,6 +11,7 @@ var path = require('path');
 var serialport = require('serialport');
 var SerialPort = serialport.SerialPort;
 var ioclient = require('socket.io/node_modules/socket.io-client');
+var stage = require('./lib/stage');
 
 var app = express();
 var server = http.createServer(app);
@@ -38,7 +39,7 @@ server.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
-socket = ioclient.connect('http://semterface.herokuapp.com/');  
+var socket = ioclient.connect('http://semterface.herokuapp.com/');
 //socket = ioclient.connect('http://semterface.aws.af.cm/');
 socket.on('news', function (data) {
       console.log(data);
@@ -46,10 +47,10 @@ socket.on('news', function (data) {
 
 //var portName = '/dev/tty.usbserial-A800ewsy'; // My Arduino
 //var portName = '/dev/tty.usbmodem3d11'; // SEM Port
-var portName = 'COM3' //Windows 7 machines
+var portName = 'COM3'; //Windows 7 machines
 
-console.log("Serial session started.");
-serial = new SerialPort(portName, {
+console.log('Serial session started.');
+var serial = new SerialPort(portName, {
     baudrate: 9600
 });
 
@@ -62,26 +63,26 @@ serialport.list(function (err, ports) {
 });
 
 
-serial.on("open", function () {
-    console.log('open');
+serial.on('open', function () {
+    console.log('Serial is open');
     serial.on('data', function(data) {
     console.log('data received: ' + data);
-  }); 
+  });
     socket.on('control', function (data) {
         console.log(data);
         switch(data.move) {
         case 'up':
-        serial.write(new Buffer([119]));
+        serial.write(stage.up);
         break;
         case 'down':
-        serial.write(new Buffer([115]))
+        serial.write(stage.down);
         break;
         case 'right':
-        serial.write(new Buffer([100]));
+        serial.write(stage.right);
         break;
         case 'left':
-        serial.write(new Buffer([97]));
-        break;  
+        serial.write(stage.left);
+        break;
         }
     });
 });
