@@ -1,5 +1,7 @@
 {
   "name": "SEMTerface",
+  "author": "Bret Comnes (http://bret.io)",
+  "contributors": "Galen Gledhill",
   "version": "0.0.2",
   "repository": {
     "type": "git",
@@ -12,10 +14,11 @@
   "dependencies": {
     "express": "3.4.0",
     "jade": "*",
-    "socket.io": "latest"
+    "socket.io": "*"
   },
   "devDependencies": {
-    "replify": "~1.1.4"
+    "replify": "~1.1.4",
+    "hardware-socket": "git://github.com/bcomnes/hardware-socket.git#master"
   },
   "engines": {
     "node": "0.10.x",
