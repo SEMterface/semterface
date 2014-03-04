@@ -1,16 +1,35 @@
 body {
-  padding-top: 70px;
-  padding-bottom: 30px;
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-.theme-dropdown .dropdown-menu {
-  display: block;
-  position: static;
-  margin-bottom: 20px;
+a {
+  color: #00B7FF;
 }
 
-.theme-showcase > p > .btn {
-  margin: 5px 0;
+video {
+  border-style: dotted;
+}
+
+#menu {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 12px;
+  color: #888;
+}
+#menu .name:after {
+  content: ' -';
+}
+
+#menu .logo {
+  font-weight: bold;
+}
+
+#menu a {
+  text-decoration: none;
+  margin-left: 5px;
+  color: black;
 }
 
 .center{
@@ -18,4 +37,8 @@ body {
     margin-left: auto;
     margin-right: auto;
     text-align:center;
+}
+
+.indacator { 
+  border-style: dotted;
 }

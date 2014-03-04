@@ -1,7 +1,7 @@
 extends layout
 
 block append content
-  div#remotesVideos(class='center')
+  video#remotesVideos(class='center')
   video#localVideo(height='100', class='center')
   
   div(class='center')
@@ -10,3 +10,7 @@ block append content
     button#a(type='button') A
     button#s(type='button') S
     button#d(type='button') D
+
+  div#values
+    span.indacator#acc Acc
+    span.indacator#zoom Zoom

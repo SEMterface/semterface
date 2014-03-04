@@ -1,25 +1,12 @@
 doctype 5
 html
   head
-    title= semterface
-    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css')
-    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css')
+    title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    div(class='navbar navbar-inverse navbar-fixed-top')
-      div(class='container')
-        div(class='navbar-header')
-          button(type='button', class='navbar-toggle', data-toggle='collapse', data-target='.navbar-collapse')
-            span(class='icon-bar')
-            span(class='icon-bar')
-            span(class='icon-bar')
-          a(class='navbar-brand', href='#') SEMterface
-        div(class='navbar-collapse collapse')
-          ul(class='nav navbar-nav')  
+    header
+      include includes/menu  
     div(class='container')
       block content
     footer
-      script(src='/socket.io/socket.io.js')
-      script(src='http://simplewebrtc.com/latest.js')
-      script(src='/javascripts/message.js')
-      script(src='//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js')
+      include includes/scripts

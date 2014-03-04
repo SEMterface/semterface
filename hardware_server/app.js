@@ -12,6 +12,7 @@ var serialport = require('serialport');
 var SerialPort = serialport.SerialPort;
 var ioclient = require('socket.io/node_modules/socket.io-client');
 var stage = require('./lib/stage');
+var scope = require('/lib/scope');
 
 var app = express();
 var server = http.createServer(app);
@@ -45,13 +46,26 @@ socket.on('news', function (data) {
       console.log(data);
 });
 
-//var portName = '/dev/tty.usbserial-A800ewsy'; // My Arduino
-//var portName = '/dev/tty.usbmodem3d11'; // SEM Port
-var portName = 'COM3'; //Windows 7 machines
 
-console.log('Serial session started.');
-var serial = new SerialPort(portName, {
+switch(process.platform) {
+    case 'darwin':
+    var stagePortName = '/dev/tty.usbserial-A800ewsy'; // My Arduino
+    //var stagePortName = '/dev/tty.usbmodem3d11'; // SEM Port
+    var scopePortName = '/dev/tty.PL2303-0000101D';
+    break;
+    case 'windows':
+    var stagePortName = 'COM3'; //Windows 7 machines
+    var scopePortName = 'COM5';
+    break;
+}
+
+console.log('Stage Control started.');
+var serial = new SerialPort(stagePortName, {
     baudrate: 9600
+});
+
+var scopeCom = new SerialPort(scopePortName, {
+    baudrate: 2400
 });
 
 serialport.list(function (err, ports) {
@@ -83,6 +97,12 @@ serial.on('open', function () {
         case 'left':
         serial.write(stage.left);
         break;
+        case 'Read':
+        scopeCom.write('ACC\r', function(err, results) {
+            console.log('err ' + err);
+            console.log('results ' + results);
+        });
+        break
         }
     });
 });
