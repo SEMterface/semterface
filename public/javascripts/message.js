@@ -4,6 +4,14 @@ var rightButton = document.getElementById("d");
 var leftButton = document.getElementById("a");
 
 var magSlider = document.getElementById("mag");
+var magVal = document.getElementById("magval");
+var focusSlider = document.getElementById("focus");
+var focusval = document.getElementById("focusval");
+
+var commands = {
+    MG: magVal,
+    OF: focusval
+}
 
 var socket = io.connect();
 socket.on('news', function (data) {
@@ -12,6 +20,12 @@ socket.on('news', function (data) {
 socket.on('control', function (data) {
     console.log(data);
 });
+socket.on('status', function(data) {
+    if (data.length() == 3) {
+        var element = commands[data[1]];
+        element.value = data[2];
+    }
+})
 
 upButton.onclick = function() {
     socket.emit('send', { move: 'up'});
@@ -34,6 +48,10 @@ function sendOperation(op, arg){
 
 magSlider.onmouseup = function() {
     sendOperation('mag', magSlider.value);
+}
+
+focusSlider.onmouseup = function () {
+    sendOperation('mag', focusSlider.value);
 }
 
 window.addEventListener('keydown',this.check,false);

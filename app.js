@@ -43,4 +43,8 @@ io.sockets.on('connection', function (socket) {
     console.log(data);
     io.sockets.emit('control', data);
   });
+  socket.on('res', function(data) {
+    console.log(data);
+    io.sockets.emit('status', data);
+  })
 });
