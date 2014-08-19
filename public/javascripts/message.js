@@ -24,21 +24,27 @@ leftButton.onclick = function() {
     socket.emit('send', { move: 'left'});
 };
 
+function sendOperation(op, arg){
+    socket.emit('send', {op: op,
+                        arg: arg
+    })
+}
+
 window.addEventListener('keydown',this.check,false);
 
 function check(e) {
     var code = e.keyCode;
     switch (code) {
-        case 87: console.log("Up"); 
+        case 87: console.log("Up");
         upButton.click();
         break; //W
-        case 83: console.log("Down"); 
+        case 83: console.log("Down");
         downButton.click();
         break; //S
-        case 68: console.log("Right"); 
+        case 68: console.log("Right");
         rightButton.click();
         break; //D
-        case 65: console.log("Left"); 
+        case 65: console.log("Left");
         leftButton.click();
         break; //A
         default: console.log(code); //Everything else
