@@ -2,6 +2,11 @@ extends layout
 
 block append content
   div#remotesVideos(class='center')
+  form
+    label(for="mag") Magnification:
+    input(type="range" name="Magnification" id="mag" value="220" min="80" max="800" data-show-value="true" data-popup-enabled="true" data-hightlight="true")
+    input(type="text" readonly id="magval")
+
   video#localVideo(class='center')
 
   div(class='center')
@@ -10,6 +15,3 @@ block append content
     button#a(type='button') A
     button#s(type='button') S
     button#d(type='button') D
-  form
-    label(for="mag") Magnification:
-    input(type="range" name="Magnification" id="mag" value="220" min="80" max="10000" data-show-value="true" data-popup-enabled="true" data-hightlight="true")
