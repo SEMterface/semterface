@@ -3,6 +3,8 @@ var downButton = document.getElementById("s");
 var rightButton = document.getElementById("d");
 var leftButton = document.getElementById("a");
 
+var magSlider = document.getElementById("mag");
+
 var socket = io.connect();
 socket.on('news', function (data) {
     console.log(data);
@@ -28,6 +30,10 @@ function sendOperation(op, arg){
     socket.emit('send', {op: op,
                         arg: arg
     })
+}
+
+magSlider.onmouseup = function() {
+    sendOperation('mag', magSlider.value);
 }
 
 window.addEventListener('keydown',this.check,false);
