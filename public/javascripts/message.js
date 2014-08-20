@@ -24,8 +24,8 @@ socket.on('status', function(data) {
     console.log('Got a status!')
     console.log(data);
     console.log(commands[data[1]])
-    var element = commands[data[1]];
-    element.value = data[2];
+    var element = commands[data.op];
+    element.value = data.val;
 })
 
 upButton.onclick = function() {
