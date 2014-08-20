@@ -52,7 +52,7 @@ magSlider.onmouseup = function() {
 }
 
 focusSlider.onmouseup = function () {
-    sendOperation('mag', focusSlider.value);
+    sendOperation('objFine', focusSlider.value);
 }
 
 window.addEventListener('keydown',this.check,false);
