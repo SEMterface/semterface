@@ -22,6 +22,9 @@ socket.on('control', function (data) {
 });
 socket.on('status', function(data) {
     if (data.length === 3) {
+        console.log('Got a status!');
+        console.log(data);
+        console.log(commands[data[1]])
         var element = commands[data[1]];
         element.value = data[2];
     }
