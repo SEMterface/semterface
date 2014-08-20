@@ -21,8 +21,10 @@ socket.on('control', function (data) {
     console.log(data);
 });
 socket.on('status', function(data) {
+    console.log('Got a status!')
+    console.log(data);
     if (data.length === 3) {
-        console.log('Got a status!');
+        console.log('Got a status greater than 3!');
         console.log(data);
         console.log(commands[data[1]])
         var element = commands[data[1]];
