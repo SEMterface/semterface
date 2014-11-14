@@ -68,7 +68,7 @@ io.sockets.on('connection', function (socket) {
       if (JSON.parse(body).status === "okay") {
         socket.set('email', body.email), function() {
           console.log(email + ' is logged in')
-          socket.emit('login', 'okay');
+          socket.emit('login', info);
         }
       }
       else {
