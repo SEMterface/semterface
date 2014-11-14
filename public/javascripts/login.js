@@ -13,7 +13,7 @@ var signoutLinkSpan = document.createElement('span');
 var signoutLinkText = document.createTextNode('Sign Out');
 signoutLinkSpan.appendChild(signoutLinkText);
 signoutLink.appendChild(signoutLinkSpan);
-signoutLink.onclick = function() { navigator.id.request(); };
+signoutLink.onclick = function() { navigator.id.logout(); };
 
 logIn.appendChild(signinLink);
 var currentUser = null;
