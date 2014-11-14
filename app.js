@@ -66,16 +66,19 @@ io.sockets.on('connection', function (socket) {
     request(options, function(err,res,body) {
       if (body.status === "okay") {
         socket.set('email', body.email), function() {
+          console.log(email + ' is logged in')
           socket.emit('login', 'okay');
         }
       }
       else {
+        console.log('login failure')
         socket.emit('logout', 'logout');
       }
     })
   })
 
   socket.on('logout', function(data) {
+    console.log('user wants to log out');
     socket.set('email', null), function() {
       socket.emit('logout', 'logout');
     }

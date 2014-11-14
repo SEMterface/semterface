@@ -22,6 +22,8 @@ navigator.id.watch({
   loggedInUser: currentUser,
   onlogin: function(assertion) {
     socket.emit('login', {assertion: assertion});
+    logIn.removeChild(signinLink);
+    logIn.appendChild(signoutLink);
   },
   onlogout: function() {
     socket.emit('logout');
@@ -30,13 +32,12 @@ navigator.id.watch({
 
 
 socket.on('login', function(data) {
-  logIn.removeChild(signinLink);
-  logIn.appendChild(signoutLink);
   console.log(data);
   currentUser = data.email;
 })
 
 socket.on('logout', function(data) {
+  console.log(data);
   logIn.removeChild(signoutLink);
   logIn.appendChild(signinLink);
   currentUser = null;
