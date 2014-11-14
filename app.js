@@ -9,6 +9,8 @@ var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 
+var request = require('request');
+
 var app = express();
 var server = http.createServer(app);
 
@@ -46,5 +48,23 @@ io.sockets.on('connection', function (socket) {
   socket.on('res', function(data) {
     console.log(data);
     io.sockets.emit('status', data);
+  })
+  socket.on('login', function(data){
+    console.log(data);
+
+    var options = {
+      method: 'POST',
+      url: "https://verifier.login.persona.org/verify",
+      qs: {
+        assertion: data.assertion,
+        audience: "https://semterface.herokuapp.com"
+      }
+    }
+
+    request(options, function(err,msg,res) {
+      console.log(err);
+      console.log(msg);
+      console.log(res);
+    })
   })
 });
