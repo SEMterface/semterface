@@ -31,7 +31,7 @@ navigator.id.watch({
 });
 
 
-socket.on('login', function(data) {
+socket.on('logincb', function(data) {
   console.log(data);
   currentUser = data.email;
 })

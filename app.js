@@ -68,8 +68,8 @@ io.sockets.on('connection', function (socket) {
       if (JSON.parse(body).status === "okay") {
         socket.set('email', body.email), function() {
           console.log(email + ' is logged in')
-          socket.emit('login', info);
         }
+        socket.emit('logincb', info);
       }
       else {
         console.log('login failure')
