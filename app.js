@@ -73,6 +73,7 @@ io.sockets.on('connection', function (socket) {
       }
       else {
         console.log('login failure')
+        console.log(res);
         console.log(body);
         console.log(err);
         socket.emit('logout', 'logout');
