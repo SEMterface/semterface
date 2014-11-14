@@ -40,18 +40,20 @@ server.listen(app.get('port'), function(){
 var io = require("socket.io").listen(server);
 
 io.sockets.on('connection', function (socket) {
+
   socket.emit('news', { hello: 'Things appear to be turned on.' });
+
   socket.on('send', function(data) {
     console.log(data);
     io.sockets.emit('control', data);
   });
+
   socket.on('res', function(data) {
     console.log(data);
     io.sockets.emit('status', data);
   })
-  socket.on('login', function(data){
-    console.log(data);
 
+  socket.on('login', function(data){
     var options = {
       method: 'POST',
       url: "https://verifier.login.persona.org/verify",
@@ -61,10 +63,21 @@ io.sockets.on('connection', function (socket) {
       }
     }
 
-    request(options, function(err,msg,res) {
-      console.log(err);
-      console.log(msg);
-      console.log(res);
+    request(options, function(err,res,body) {
+      if (body.status === "okay") {
+        socket.set('email', body.email), function() {
+          socket.emit('login', 'okay');
+        }
+      }
+      else {
+        socket.emit('logout', 'logout');
+      }
     })
+  })
+
+  socket.on('logout', function(data) {
+    socket.set('email', null), function() {
+      socket.emit('logout', 'logout');
+    }
   })
 });
