@@ -12,6 +12,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "test": "istanbul cover _mocha",
+    "submitCoverage": "cat coverage/lcov.info | codeclimate",
     "browserify": "browserify ./client/*"
   },
   "dependencies": {
