@@ -36,7 +36,7 @@ socket.on('logincb', function(data) {
   currentUser = data.email;
 })
 
-socket.on('logout', function(data) {
+socket.on('logoutcb', function(data) {
   console.log(data);
   logIn.removeChild(signoutLink);
   logIn.appendChild(signinLink);

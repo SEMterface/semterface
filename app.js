@@ -84,7 +84,7 @@ io.sockets.on('connection', function (socket) {
   socket.on('logout', function(data) {
     console.log('user wants to log out');
     socket.set('email', null), function() {
-      socket.emit('logout', 'logout');
+      socket.emit('logoutcb', 'logout');
     }
   })
 });
