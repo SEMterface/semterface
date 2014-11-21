@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "git://github.com/bcomnes/SEMterface.git"
+    "url": "git://github.com/SEMterface/setterface.git"
   },
   "bin": "./bin/www",
   "description": "A web application for controlling microscopes.",
@@ -13,7 +13,8 @@
     "start": "node ./bin/www",
     "test": "istanbul cover _mocha",
     "submitCoverage": "cat coverage/lcov.info | codeclimate",
-    "browserify": "browserify ./client/*"
+    "browserify": "browserify ./client/*",
+    "mocha": "mocha"
   },
   "dependencies": {
     "body-parser": "^1.8.1",
@@ -56,7 +57,7 @@
     "lib": "./lib",
     "bin": "./bin"
   },
-  "homepage": "https://github.com/SEMterface/SEMterface",
-  "bugs": "http://github.com/bcomnes/SEMterface/issues",
+  "homepage": "https://github.com/SEMterface/semterface",
+  "bugs": "http://github.com/SEMterface/semterface/issues",
   "license": "MIT"
 }
