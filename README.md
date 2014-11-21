@@ -1,13 +1,11 @@
 SEMterface
 ==========
 
-[![Dependency Status](https://gemnasium.com/bcomnes/SEMterface.png)](https://gemnasium.com/bcomnes/SEMterface)
-
 This is the home for a web based interface for the Jeol JXA-6400 SEM in SRTC 169.  Currently in prototyping stages.
 
 ## The story so far
 
-So far, we are controlling the SEM using a man in the middle attack using an arduino.  From here, we use sockets.io, node.js, and webRTC to remotely view and control the microscope. 
+So far, we are controlling the SEM using a man in the middle attack using an arduino.  From here, we use sockets.io, node.js, and webRTC to remotely view and control the microscope.
 
 At this point we probably need to put the signaling server onto a web server of its own and delegate the control server to talk out of the network via webRTC's NAT busting magic, that or negotiate with OIT to get some ports forwarded.
 
@@ -36,3 +34,5 @@ At this point we probably need to put the signaling server onto a web server of 
 - Appended `;C:\Python27\` to my *System* path.  I used Right click computer -> Advanced System settings (in side bar) -> Advanced Tab -> Enviroment Variables -> Modified `Path` in the System Variables List
 
 
+## Notes
+- http://anthonyterrien.com/knob/ knobs

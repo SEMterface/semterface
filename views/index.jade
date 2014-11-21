@@ -1,16 +1,6 @@
 extends layout
 
-block append content
-  video#remotesVideos(class='center')
-  video#localVideo(height='100', class='center')
-  
-  div(class='center')
-    button#w(type='button') W
-  div#buttons(class='center')
-    button#a(type='button') A
-    button#s(type='button') S
-    button#d(type='button') D
+block content
+  h1= title
+  p Welcome to #{title}
 
-  div#values
-    span.indacator#acc Acc
-    span.indacator#zoom Zoom

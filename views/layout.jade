@@ -1,12 +1,9 @@
-doctype 5
+doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/css/style.css')
+    meta(http-equiv="X-UA-Compatible", content="IE=Edge")
   body
-    header
-      include includes/menu  
-    div(class='container')
-      block content
-    footer
-      include includes/scripts
+    block content
+    script(src='/js/ioClient.js')
