@@ -1,6 +1,14 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-
+  div(class="sem")
+    header
+      h1= title
+      div(class="login") Signin button
+    div(class="scope")
+      div(class="display")
+        div(class="video") bloop
+        div(class="status") bleep
+      div(class="controls")
+        include includes/controls
+    footer
