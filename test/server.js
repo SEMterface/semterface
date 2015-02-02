@@ -1,29 +1,33 @@
-var assert = require('assert');
 var request = require('request');
-var httpUtils = require('request-mocha')(request);
+var test = require('tape');
 
-var server = require('../lib/server')
+var server = require('../lib/server');
 
-describe('Start the server', function() {
-  before(server.start);
-  this.timeout(10000);
+var before = test;
+var after = test;
 
-  describe('GET /', function() {
-    httpUtils.save('http://localhost:3000/');
+var port = 3001;
 
-    it ('should respond without error', function() {
-      assert(this.err === null)
-    });
+before("start the server", function(t) {
+  t.plan(1);
+  server.start(port, function(p) {
+    t.pass('The server started on port ' + p);
+  })
+})
 
-    it ('should respond with 202 status code', function() {
-      assert(this.res.statusCode === 200);
-    });
+test('GET /', function(t) {
+  t.plan(3);
+  request('http://localhost:' + port, function(err, res, body) {
+    t.equal(err, null, 'should be error free');
+    t.equal(res.statusCode, 200, 'should respond with 200');
+    var msg = 'should respond with "Welcome to Gitpub"';
+    t.assert(res.body.indexOf("Welcome to Express") > -1, msg);
+  })
+})
 
-    it ('should respond with "Welcome to Express"', function(){
-      var pos = this.body.indexOf("Welcome to Express")
-      assert(pos > -1 )
-    })
-  });
-
-  after(server.stop);
-});
+after("stop the server", function(t) {
+  t.plan(1);
+  server.stop(function() {
+    t.pass('the server stopped');
+  })
+})
