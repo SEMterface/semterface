@@ -111,11 +111,17 @@ header h1 {
   display: flex;
   flex-grow: 5;
   flex-direction: column;
+  justify-content: space-around
 }
 
 .video {
-  flex-grow: 4;
   background-color: #888888;
+  flex-grow: 1;
+  display: flex;
+}
+
+#localVideo {
+  flex-grow: 1;
 }
 
 .status {
@@ -126,6 +132,7 @@ header h1 {
 
 .controls {
   background-color: #DEDEDE;
+  flex-shrink: 0;
   overflow-y: auto;
   overflow-x: hidden;
 }
