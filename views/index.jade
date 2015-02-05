@@ -1,17 +1,16 @@
 extends layout
 
 block content
-  div(class="container")
-    header(class="button")
-      h1
-        a(href='#' class='logo') #{title}
-      div(class="login")
-        a(href="#" class="persona-button")
-         span Sign in
-    div(class="scope")
-      div(class="display")
-        div(class="video") bloop
-        div(class="status") bleep
-      div(class="controls")
-        include includes/controls
-    footer
+  header(class="button")
+    h1
+      a(href='#' class='logo') #{title}
+    div(class="login")
+      a(href="#" class="persona-button")
+       span Sign in
+  div(class="scope")
+    div(class="display")
+      div(class="video") video
+      div(class="status") msgbox
+    div(class="controls")
+      include includes/controls
+  footer footer
