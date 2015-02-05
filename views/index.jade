@@ -1,10 +1,13 @@
 extends layout
 
 block content
-  div(class="sem")
-    header
-      h1= title
-      div(class="login") Signin button
+  div(class="container")
+    header(class="button")
+      h1
+        a(href='#' class='logo') #{title}
+      div(class="login")
+        a(href="#" class="persona-button")
+         span Sign in
     div(class="scope")
       div(class="display")
         div(class="video") bloop

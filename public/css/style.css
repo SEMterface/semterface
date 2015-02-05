@@ -1,41 +1,120 @@
 body {
-  padding: 0px;
-  margin: 10px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #D8DAEB;
+  background-color: #fff;
+  font-family: helvetica, sans-serif;
+  margin: 0% 0%
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
+
+label {
+  display:block;
+  font-size: 0.9em;
+  color:#777;
+}
+
+.dropdown {
+  position: relative;
+  display:block;
+  margin-top:0.5em;
+  overflow:hidden;
+  width:100%;
+  max-width:100%;
+}
+
+input[type=text] {
+  display:block;
+}
+
+select {
+  /* Make sure the select is wider than the container so we can clip the arrow */
+  width:110%;
+  max-width:110%;
+  min-width:110%;
+  /* Remove select styling */
+  appearance: none;
+  -webkit-appearance: none;
+  /* Ugly Firefox way of doing it */
+  -moz-appearance: window;
+  text-indent: 0.01px;
+  text-overflow: "";
+  /* Magic font size number to prevent iOS text zoom */
+  font-size:16px;
+  font-weight: bold;
+  background:none;
+  border: none;
+  color: #444;
+  outline: none;
+  /* Padding works surpringly well */
+  padding: .4em 19% .4em .8em;
+  font-family: helvetica, sans-serif;
+  line-height:1.2;
+  margin:.2em;
+}
+/* This hides native dropdown button arrow in IE */
+select::-ms-expand {
+  display: none;
+}
+ /* These are just demo button-y styles, style as you like */
+.button {
+  border: 1px solid #bbb;
+  border-radius: .3em;
+  box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+  background: #f3f3f3; /* Old browsers */
+  background: -moz-linear-gradient(top, #ffffff 0%, #e5e5e5 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e5e5e5)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #ffffff 0%,#e5e5e5 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #ffffff 0%,#e5e5e5 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #ffffff 0%,#e5e5e5 100%); /* IE10+ */
+  background: linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+}
+
 
 a {
   color: #00B7FF;
 }
 
-.sem {
+.container {
   display: flex;
   flex-direction: column;
-  background-color: #d3d3d3
-}
-
-.sem * {
-  min-width: 100px;
+  min-height: 100vh;
+  flex: 1;
 }
 
 header {
-  background-color: #BDBDBD;
+  /* background-color: #BDBDBD; */
   display: flex;
   flex-direction: row;
+
+}
+
+header h1 {
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+
+.logo {
+  text-shadow: 0 1px 0 rgba(255,255,255,.1);
+  text-decoration: none;
+  color: #000;
 }
 
 .login {
   margin-left: auto;
+  display: flex;
+  align-items: center;
 }
 
 .scope {
   display: flex;
+  flex: 1;
   flex-direction: row;
+  overflow-y: auto;
 }
 
 .scope > * {
-  min-height: 100px;
+  flex-grow: 0;
 }
 
 .display {
@@ -55,8 +134,18 @@ header {
 }
 
 .controls {
-  flex-grow: 0;
   background-color: #DEDEDE;
+}
+
+.controls ul {
+  padding-left: 20px;
+  padding-right: 20px;
+  overflow-y: auto;
+}
+
+.controls li {
+  padding: 2px;
+  margin-bottom: 2px;
 }
 
 footer {

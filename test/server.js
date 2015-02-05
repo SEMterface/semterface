@@ -20,8 +20,9 @@ test('GET /', function(t) {
   request('http://localhost:' + port, function(err, res, body) {
     t.equal(err, null, 'should be error free');
     t.equal(res.statusCode, 200, 'should respond with 200');
-    var msg = 'should respond with "Welcome to Gitpub"';
-    t.assert(res.body.indexOf("Welcome to Express") > -1, msg);
+    var liveCheck = "SEMterface"
+    var msg = 'should respond with "' + liveCheck + '"';
+    t.assert(res.body.indexOf("SEMterface") > -1, msg);
   })
 })
 
