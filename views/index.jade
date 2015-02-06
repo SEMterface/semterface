@@ -11,8 +11,14 @@ block content
     div(class="display")
       div(class="video")
         video(id="localVideo")
-      div(class="status") msgbox
+      div(class="info")
+        div(id="messages") message box
     div(class="controls")
       include includes/controls
-  footer 
-    a(href="https://github.com/SEMterface") Source
+  footer
+    div(id="vitals")
+      span
+        div Status:
+    div(id="info")
+      a(href="https://github.com/SEMterface")
+        img(src="/img/GitHub-Mark-32px.png")
