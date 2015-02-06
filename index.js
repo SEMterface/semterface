@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var browserify = require('browserify-middleware');
+var autoprefixer = require('express-autoprefixer');
 
 var routes = require('./routes/index');
 
@@ -26,6 +27,10 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 app.use('/js', browserify('./client'));
+app.use(autoprefixer({
+    browsers: 'last 2 versions',
+    cascade: false
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
