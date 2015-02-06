@@ -121,14 +121,13 @@ header h1 {
   flex-direction: column;
 }
 
-#localVideo {
+#localVideo,#remoteVideo {
   flex-grow: 1;
   flex-shrink: 1;
   flex-basis: auto;
   min-width: 0;
   min-height: 0;
 }
-
 
 .info {
   height: 150px;
