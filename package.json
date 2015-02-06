@@ -16,8 +16,8 @@
     "cover": "istanbul cover tape test/*.js| tap-spec",
     "submitCover": "cat coverage/lcov.info | codeclimate",
     "travis": "npm run cover && npm run submitCover",
-    "mon-serv": "nodemon -i coverage --exec 'npm --silent start'",
-    "mon-test": "nodemon -i coverage --exec 'npm --silent run cover'"
+    "mon": "nodemon -i coverage --exec 'npm --silent start'",
+    "tester": "nodemon -i coverage --exec 'npm --silent run cover'"
   },
   "dependencies": {
     "body-parser": "^1.8.1",
@@ -52,12 +52,10 @@
     "url": "http://bret.io",
     "email": "bcomnes@pdx.edu"
   },
-  "contributors": [
-    {
-      "name": "Galen Gledhil",
-      "email": "ggalen@pdx.edu"
-    }
-  ],
+  "contributors": [{
+    "name": "Galen Gledhil",
+    "email": "ggalen@pdx.edu"
+  }],
   "directories": {
     "lib": "./lib",
     "bin": "./bin"
