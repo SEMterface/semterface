@@ -102,6 +102,7 @@ header h1 {
 .scope {
   flex-grow: 1;
   display: flex;
+  overflow: hidden;
 }
 
 
@@ -152,6 +153,11 @@ header h1 {
   padding: 2px;
   margin-bottom: 2px;
 }
+
+.controls input[type=range],input[type=text] {
+  width: auto;
+}
+
 
 footer {
   min-height: 50px;
