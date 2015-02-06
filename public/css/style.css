@@ -116,12 +116,19 @@ header h1 {
 .video {
   background-color: #888888;
   flex-grow: 1;
+  overflow: hidden;
   display: flex;
+  flex-direction: column;
 }
 
 #localVideo {
   flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  min-width: 0;
+  min-height: 0;
 }
+
 
 .info {
   height: 150px;
