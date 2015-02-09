@@ -53,17 +53,22 @@
     "url": "http://bret.io",
     "email": "bcomnes@pdx.edu"
   },
-  "contributors": [
-    {
-      "name": "Galen Gledhil",
-      "email": "ggalen@pdx.edu"
-    }
-  ],
+  "contributors": [{
+    "name": "Galen Gledhil",
+    "email": "ggalen@pdx.edu"
+  }],
   "directories": {
     "lib": "./lib",
     "bin": "./bin"
   },
   "homepage": "https://github.com/SEMterface/semterface",
   "bugs": "http://github.com/SEMterface/semterface/issues",
-  "license": "MIT"
+  "license": "MIT",
+  "jshintConfig": {
+    "node": true,
+    "jquery": true,
+    "strict": false,
+    "globalstrict": false,
+    "asi": true
+  }
 }
