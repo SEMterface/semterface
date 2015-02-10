@@ -1,13 +1,3 @@
-label {
-  display:block;
-  font-size: 0.9em;
-  color:#777;
-}
-
-input[type=text] {
-  display:block;
-}
-
 .dropdown {
   position: relative;
   display:block;
@@ -121,7 +111,7 @@ header h1 {
   flex-direction: column;
 }
 
-#localVideo,#remoteVideo {
+video,#localVideo,#remoteVideo {
   flex-grow: 1;
   flex-shrink: 1;
   flex-basis: auto;
@@ -158,12 +148,22 @@ header h1 {
 .controls li {
   padding: 2px;
   margin-bottom: 2px;
+  display: flex;
+  flex-direction: column;
 }
 
 .controls input[type=range],input[type=text] {
+  display:block;
   width: auto;
 }
 
+label {
+  font-size: 0.9em;
+  color:#777;
+}
+
+input[type=text] {
+}
 
 footer {
   min-height: 50px;
