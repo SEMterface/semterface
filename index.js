@@ -3,9 +3,15 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
-//var cookieParser = require('cookie-parser');
+var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var session = require('express-session');
+var expressSession = require('express-session');
+
+var session = expressSession({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true
+})
 
 // 3rd Party
 var browserify = require('browserify-middleware');
@@ -17,7 +23,7 @@ var routes = require('./routes/index');
 // Set up the servers
 var app = express(); // Express
 var server = require('http').Server(app); // Attatch http server to express
-var ioServer = require('./lib/ioServer')(server) // Start iojs Server
+var ioServer = require('./lib/ioServer')(server, session) // Start iojs Server
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -35,12 +41,8 @@ app.use(bodyParser.json()); // Parse json
 app.use(bodyParser.urlencoded({
     extended: false
 })); //Parse forms
-//app.use(cookieParser()); // Parse cookies
-app.use(session({
-    secret: 'keyboard cat',
-    resave: false,
-    saveUninitialized: true
-}));
+app.use(cookieParser()); // Parse cookies
+app.use(session);
 
 app.use('/js', browserify('./client')); // Browserify JS
 app.use(autoprefixer({

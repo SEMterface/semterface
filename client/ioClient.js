@@ -4,9 +4,7 @@ var SimpleWebRTC = require('simplewebrtc');
 var qs = require('querystring');
 
 
-var socket = io({
-  autoConnect: false
-});
+var socket = io();
 
 socket.on('connect', function(data) {
   $('#messages').append(divSystemContentElement('Connected'));
@@ -15,7 +13,7 @@ socket.on('connect', function(data) {
 socket.on('connect_timeout', function(data) {
   //stuff
 })
-socket
+
 socket.on('reconnect', function(data) {
   //stuff
 })
@@ -39,14 +37,32 @@ var currentUser = null;
 navigator.id.watch({
   loggedInUser: currentUser,
   onlogin: function(assertion) {
-    console.log('ok, trying to connect')
-    socket.io.opts.query = qs.stringify({
-      assert: assertion
-    })
-    socket.connect()
+    $.ajax({ /* <-- This example uses jQuery, but you can use whatever you'd like */
+      type: 'POST',
+      url: '/auth/login', // This is a URL on your website.
+      data: {
+        assertion: assertion
+      },
+      success: function(res, status, xhr) {
+        window.location.reload();
+      },
+      error: function(xhr, status, err) {
+        navigator.id.logout();
+        alert("Login failure: " + err);
+      }
+    });
   },
   onlogout: function() {
-    socket.emit('logout');
+    $.ajax({
+      type: 'POST',
+      url: '/auth/logout', // This is a URL on your website.
+      success: function(res, status, xhr) {
+        window.location.reload();
+      },
+      error: function(xhr, status, err) {
+        alert("Logout failure: " + err)
+      }
+    })
   }
 });
 
