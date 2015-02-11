@@ -1,8 +1,5 @@
 var io = require('socket.io-client');
 var $ = require('jquery');
-var SimpleWebRTC = require('simplewebrtc');
-var qs = require('querystring');
-
 
 var socket = io();
 
@@ -11,11 +8,11 @@ socket.on('connect', function(data) {
 })
 
 socket.on('connect_timeout', function(data) {
-  //stuff
+  $('#messages').append(divSystemContentElement(data));
 })
 
 socket.on('reconnect', function(data) {
-  //stuff
+  $('#messages').append(divSystemContentElement(data));
 })
 
 socket.on('news', function(data) {
@@ -32,23 +29,25 @@ socket.on('info', function(data) {
   console.log(data);
 })
 
-var currentUser = null;
+var currentUser = $("#currentUser").text() || null;
+console.log("currentUser: " + currentUser);
 
 navigator.id.watch({
   loggedInUser: currentUser,
   onlogin: function(assertion) {
-    $.ajax({ /* <-- This example uses jQuery, but you can use whatever you'd like */
+    $.ajax({
       type: 'POST',
       url: '/auth/login', // This is a URL on your website.
       data: {
         assertion: assertion
       },
       success: function(res, status, xhr) {
+        $('#messages').append(divSystemContentElement(res));
         window.location.reload();
       },
       error: function(xhr, status, err) {
         navigator.id.logout();
-        alert("Login failure: " + err);
+        $('#messages').append(divSystemContentElement(err));
       }
     });
   },
@@ -57,11 +56,10 @@ navigator.id.watch({
       type: 'POST',
       url: '/auth/logout', // This is a URL on your website.
       success: function(res, status, xhr) {
+        $('#messages').append(divSystemContentElement(res));
         window.location.reload();
       },
-      error: function(xhr, status, err) {
-        alert("Logout failure: " + err)
-      }
+      error: function(xhr, status, err) {}
     })
   }
 });
@@ -88,12 +86,3 @@ function divEscapedContentElement(message) {
 function divSystemContentElement(message) {
   return $('<div></div>').html('<i>' + message + '</i>');
 }
-
-var webrtc = new SimpleWebRTC({
-  // the id/element dom element that will hold "our" video
-  localVideoEl: 'localVideo',
-  // the id/element dom element that will hold remote videos
-  remoteVideosEl: 'remoteVideos',
-  // immediately ask for camera access
-  autoRequestMedia: true
-});

@@ -4,9 +4,15 @@ block content
   header(class="button")
     h1
       a(href='#' class='logo') #{title}
-    div(class="login")
-      a(id="signin" href="#" class="persona-button")
-       span Sign in
+    div#auth
+      if currentUser
+        // img(id="avatar" src=avatar height="30" width="30") 
+        span(id="currentUser") #{currentUser}
+        a(id="signout" href="#" class="button") 
+          span Sign out
+      else
+        a(id="signin" href="#" class="persona-button") 
+          span Sign in
   div(class="scope")
     div(class="display")
       div(class="video")

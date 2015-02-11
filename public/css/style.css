@@ -82,7 +82,7 @@ header h1 {
   margin-left: 5px;
 }
 
-.login {
+#auth {
   margin-left: auto;
   display: flex;
   align-items: center;

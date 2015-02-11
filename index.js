@@ -7,6 +7,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressSession = require('express-session');
 
+// We need this passed to our http and socket.io server
 var session = expressSession({
     secret: 'keyboard cat',
     resave: false,
@@ -44,7 +45,11 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser()); // Parse cookies
 app.use(session);
 
-app.use('/js', browserify('./client')); // Browserify JS
+var shared = ['jquery']
+app.get('/js/bundle.js', browserify(shared));
+app.use('/js', browserify('./client', {
+    external: shared
+})) // Browserify JS
 app.use(autoprefixer({
     browsers: 'last 2 versions',
     cascade: false
