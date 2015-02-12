@@ -1,4 +1,4 @@
-var electron = {
+exports.electron = {
   acc: {
     code: 'ACC',
     read: true,
@@ -36,11 +36,11 @@ var electron = {
     },
     write: {
       on: {
-        desc: 'turn the accelerating voltage on'
+        desc: 'turn the accelerating voltage on',
         code: 'ON'
       },
       off: {
-        desc: 'turn the accelerating voltage off'
+        desc: 'turn the accelerating voltage off',
         code: 'OFF'
       }
     },
@@ -72,7 +72,7 @@ var electron = {
     precision: 'dec',
     units: 'µA',
     desc: 'Reads the emission current in µA'
-  }
+  },
   ga: {},
   gaa: {},
   is: {},
@@ -119,10 +119,10 @@ var electron = {
   swxt: {},
   tb: {},
   wbl: {},
-  wd: {},
+  wd: {}
 }
 
-var scanning = {
+exports.scanning = {
   dmg: {},
   imgv: {},
   insg: {},
@@ -133,14 +133,14 @@ var scanning = {
   yzm: {}
 }
 
-var recording = {
+exports.recording = {
   frez: {},
   phl: {},
   phr: {},
   pml: {}
 }
 
-var image = {
+exports.image = {
   ave: {},
   copy: {},
   date: {},
