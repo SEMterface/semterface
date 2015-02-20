@@ -5,6 +5,7 @@ exports.electron = {
     write: true,
     type: 'numeric',
     range: [0.0, 30.0],
+    maxStep: '500v/s',
     precision: 'dec', // Decimal
     desc: 'Accelerating voltage'
   },
