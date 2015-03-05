@@ -1,6 +1,5 @@
-ul
-  - for (var x = 0; x < 20; x++)
-    li(class="button")
-      label() control:
-      input(type="range" value="1800" min="0" max="4095" data-show-value="true" data-popup-enabled="true" data-hightlight="true")
-      input(type="text" readonly)
+- for control in controls
+  div(class="button control")
+    label() #{control.code}:
+    input(type="range" value="1800" min="0" max="4095" data-show-value="true" data-popup-enabled="true" data-hightlight="true")
+    input(type="text" readonly)

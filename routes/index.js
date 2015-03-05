@@ -3,39 +3,43 @@ var router = express.Router()
 var gravatar = require('gravatar')
 var persona = require('../lib/persona')('http://localhost:3000')
 
+var controls = require('../serialCommands')
+
 /* GET home page. */
-router.get('/', function(req, res) {
+router.get('/', function (req, res) {
+  console.log(controls.electron)
   res.render('index', {
-    title: "SEMterface",
+    title: 'SEMterface',
     currentUser: req.session.email || null,
     avatar: gravatar.url(req.session.email, {
       s: '100',
       r: 'x',
       d: 'retro'
-    }, true) || null
-  });
-});
+    }, true) || null,
+    controls: controls.electron
+  })
+})
 
-router.post('/auth/login', function(req, res) {
+router.post('/auth/login', function (req, res) {
   var assertion = req.body.assertion
-  persona(assertion, function(err, verificationData) {
+  persona(assertion, function (err, verificationData) {
     console.log('returned from persona')
     console.log(verificationData)
     if (err || (verificationData.status !== 'okay')) {
-      req.session.email = null; // Clear session
-      req.session.persona = null;
+      req.session.email = null // Clear session
+      req.session.persona = null
       return res.status(500).end('Something went wrong')
     }
     req.session.email = verificationData.email
     req.session.persona = verificationData
-    res.end('You are logged in');
+    res.end('You are logged in')
   })
 })
 
-router.post('/auth/logout', function(req, res) {
-  req.session.email = null; // Clear session
-  req.session.persona = null;
-  res.end('You are logged out');
+router.post('/auth/logout', function (req, res) {
+  req.session.email = null // Clear session
+  req.session.persona = null
+  res.end('You are logged out')
 })
 
 module.exports = router

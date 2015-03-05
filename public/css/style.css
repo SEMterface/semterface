@@ -139,20 +139,19 @@ video,#localVideo,#remoteVideo {
   overflow-x: hidden;
 }
 
-.controls ul {
+.controls {
   padding-left: 20px;
   padding-right: 20px;
-  list-style: none;
 }
 
-.controls li {
+.control {
   padding: 2px;
   margin-bottom: 2px;
   display: flex;
   flex-direction: column;
 }
 
-.controls input[type=range],input[type=text] {
+.control input[type=range],input[type=text] {
   display:block;
   width: auto;
 }
