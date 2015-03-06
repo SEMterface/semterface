@@ -1,4 +1,4 @@
-//Vanilla Express
+// Express
 var express = require('express')
 var path = require('path')
 var favicon = require('serve-favicon')
@@ -30,43 +30,48 @@ var ioServer = require('./lib/ioServer')(server, session) // Start iojs Server
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'jade')
 
-
-// Middleware
+// Middleware //
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(__dirname + '/public/favicon.ico'));
+// app.use(favicon(__dirname + '/public/favicon.ico'))
 
 app.use(logger('dev')) // Logging
 
 app.use(bodyParser.json()) // Parse json
+
+// Parse forms
 app.use(bodyParser.urlencoded({
   extended: false
-})); //Parse forms
-app.use(cookieParser()) // Parse cookies
+}))
+// Parse cookies
+app.use(cookieParser())
 app.use(session)
 
+// Browserify JS
 var shared = ['jquery']
 app.get('/js/bundle.js', browserify(shared))
 app.use('/js', browserify('./client', {
   external: shared
-})) // Browserify JS
+}))
+
+// Prefix CSS
 app.use(autoprefixer({
   browsers: 'last 2 versions',
   cascade: false
-})); //Prefix CSS
+}))
 
-app.use(express.static(path.join(__dirname, 'public'))); //Static files
+// Static files
+app.use(express.static(path.join(__dirname, 'public')))
 
 // Routes
-
-app.use('/', routes);
+app.use('/', routes)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
+  var err = new Error('Not Found')
+  err.status = 404
+  next(err)
+})
 
 // error handlers
 
@@ -74,24 +79,23 @@ app.use(function (req, res, next) {
 // will print stacktrace
 if (app.get('env') === 'development') {
   app.use(function (err, req, res, next) {
-    res.status(err.status || 500);
+    res.status(err.status || 500)
     res.render('error', {
       message: err.message,
       error: err
-    });
-  });
+    })
+  })
 }
 
 // production error handler
 // no stacktraces leaked to user
 app.use(function (err, req, res, next) {
-  res.status(err.status || 500);
+  res.status(err.status || 500)
   res.render('error', {
     message: err.message,
     error: {}
-  });
-});
+  })
+})
 
-
-module.exports = app;
-module.exports.server = server; // Exposing the http server
+module.exports = app
+module.exports.server = server // Exposing the http server
