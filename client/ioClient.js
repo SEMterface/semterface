@@ -16,23 +16,31 @@ socket.on('connect', function (data) {
 })
 
 socket.on('connect_timeout', function (data) {
+  console.log('con_timeout')
+  console.log(data)
   $('#messages').append(divSystemContentElement(data))
 })
 
 socket.on('reconnect', function (data) {
+  console.log('reconnect')
+  console.log(data)
   $('#messages').append(divSystemContentElement(data))
 })
 
 socket.on('news', function (data) {
-  $('#messages').append(divSystemContentElement(data.hello))
+
+  $('#messages').append(divSystemContentElement(data.msg))
 })
 
 socket.on('err', function (data) {
-  $('#messages').append(divSystemContentElement(data))
+  console.log('err')
+  $('#messages').append(divSystemContentElement("News: " + data))
   console.log(data)
 })
 
 socket.on('info', function (data) {
+  console.log('info')
+  console.log(data)
   $('#messages').append(divSystemContentElement(data))
   console.log(data)
 })
