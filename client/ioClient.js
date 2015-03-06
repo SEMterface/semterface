@@ -28,13 +28,12 @@ socket.on('reconnect', function (data) {
 })
 
 socket.on('news', function (data) {
-
   $('#messages').append(divSystemContentElement(data.msg))
 })
 
 socket.on('err', function (data) {
   console.log('err')
-  $('#messages').append(divSystemContentElement("News: " + data))
+  $('#messages').append(divSystemContentElement('News: ' + data))
   console.log(data)
 })
 
