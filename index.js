@@ -97,5 +97,7 @@ app.use(function (err, req, res, next) {
   })
 })
 
+// Expose our fat app var
 module.exports = app
-module.exports.server = server // Exposing the http server
+// Exposing the http server
+module.exports.server = server
