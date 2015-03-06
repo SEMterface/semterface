@@ -37,10 +37,22 @@ socket.on('info', function (data) {
   console.log(data)
 })
 
+socket.on('update', function (msg) {
+  var target = id(msg.id + '_display')
+  target.value = msg.value
+})
+
 var controls = document.getElementById('controls')
 
-controls.addEventListener('input', debugIt)
+controls.addEventListener('input', sendUpdates)
 
-function debugIt (eventObj) {
-  console.log(eventObj.target.id, eventObj.target.value)
+function sendUpdates (eventObj) {
+  socket.emit('control', {
+    id: eventObj.target.parentNode.id,
+    value: eventObj.target.value
+  })
+}
+
+function id (idString) {
+  return document.getElementById(idString)
 }

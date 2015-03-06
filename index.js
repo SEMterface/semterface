@@ -1,34 +1,34 @@
 //Vanilla Express
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var expressSession = require('express-session');
+var express = require('express')
+var path = require('path')
+var favicon = require('serve-favicon')
+var logger = require('morgan')
+var cookieParser = require('cookie-parser')
+var bodyParser = require('body-parser')
+var expressSession = require('express-session')
 
 // We need this passed to our http and socket.io server
 var session = expressSession({
-    secret: 'keyboard cat',
-    resave: false,
-    saveUninitialized: true
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true
 })
 
 // 3rd Party
-var browserify = require('browserify-middleware');
-var autoprefixer = require('express-autoprefixer');
+var browserify = require('browserify-middleware')
+var autoprefixer = require('express-autoprefixer')
 
 // Routes
-var routes = require('./routes/index');
+var routes = require('./routes/index')
 
 // Set up the servers
-var app = express(); // Express
-var server = require('http').Server(app); // Attatch http server to express
+var app = express() // Express
+var server = require('http').Server(app) // Attatch http server to express
 var ioServer = require('./lib/ioServer')(server, session) // Start iojs Server
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'jade')
 
 
 // Middleware
@@ -36,23 +36,23 @@ app.set('view engine', 'jade');
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 
-app.use(logger('dev')); // Logging
+app.use(logger('dev')) // Logging
 
-app.use(bodyParser.json()); // Parse json
+app.use(bodyParser.json()) // Parse json
 app.use(bodyParser.urlencoded({
-    extended: false
+  extended: false
 })); //Parse forms
-app.use(cookieParser()); // Parse cookies
-app.use(session);
+app.use(cookieParser()) // Parse cookies
+app.use(session)
 
 var shared = ['jquery']
-app.get('/js/bundle.js', browserify(shared));
+app.get('/js/bundle.js', browserify(shared))
 app.use('/js', browserify('./client', {
-    external: shared
+  external: shared
 })) // Browserify JS
 app.use(autoprefixer({
-    browsers: 'last 2 versions',
-    cascade: false
+  browsers: 'last 2 versions',
+  cascade: false
 })); //Prefix CSS
 
 app.use(express.static(path.join(__dirname, 'public'))); //Static files
@@ -62,10 +62,10 @@ app.use(express.static(path.join(__dirname, 'public'))); //Static files
 app.use('/', routes);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
+app.use(function (req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
 });
 
 // error handlers
@@ -73,23 +73,23 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
+  app.use(function (err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: err
     });
+  });
 }
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
+app.use(function (err, req, res, next) {
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: {}
+  });
 });
 
 
