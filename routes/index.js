@@ -7,7 +7,6 @@ var controls = require('../serialCommands')
 
 /* GET home page. */
 router.get('/', function (req, res) {
-  console.log(controls.electron)
   res.render('index', {
     title: 'SEMterface',
     currentUser: req.session.email || null,
@@ -16,6 +15,14 @@ router.get('/', function (req, res) {
       r: 'x',
       d: 'retro'
     }, true) || null,
+    controls: controls.electron
+  })
+})
+
+router.get('/scope', function(req, res){
+  res.render('index', {
+    title: 'SEMterface Scope View',
+    currentUser: 'JOEL',
     controls: controls.electron
   })
 })

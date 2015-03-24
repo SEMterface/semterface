@@ -1,4 +1,5 @@
 // Express
+var fs = require('fs')
 var express = require('express')
 var path = require('path')
 var favicon = require('serve-favicon')
@@ -6,6 +7,7 @@ var logger = require('morgan')
 var cookieParser = require('cookie-parser')
 var bodyParser = require('body-parser')
 var expressSession = require('express-session')
+var npmcss = require('npm-css')
 
 // We need this passed to our http and socket.io server
 var session = expressSession({
@@ -29,6 +31,11 @@ var ioServer = require('./lib/ioServer')(server, session) // Start iojs Server
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'jade')
+
+// render bundle
+var cssPath = path.join(__dirname, 'public', 'css')
+var css = npmcss(path.join(cssPath, 'style.css'))
+fs.writeFileSync(path.join(cssPath, 'bundle.css'), css)
 
 // Middleware //
 
