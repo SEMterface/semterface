@@ -1,3 +1,5 @@
+@import 'persona-buttons';
+
 .dropdown {
   position: relative;
   display:block;
@@ -73,6 +75,11 @@ header {
 header h1 {
   margin-top: 5px;
   margin-bottom: 0px;
+}
+
+#currentUser {
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .logo {

@@ -52,3 +52,4 @@ node_modules
 
 #MacOSX Stuff
 *.DS_Store
+public/css/bundle.css
