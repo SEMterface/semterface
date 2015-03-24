@@ -1,7 +1,7 @@
 var express = require('express')
 var router = express.Router()
 var gravatar = require('gravatar')
-var persona = require('../lib/persona')('http://localhost:3000')
+var persona = require('../lib/persona')(process.env.AUDIENCE || 'http://localhost:3000')
 
 var controls = require('../serialCommands')
 
@@ -22,7 +22,7 @@ router.get('/', function (req, res) {
 router.get('/scope', function(req, res){
   res.render('index', {
     title: 'SEMterface Scope View',
-    currentUser: 'JOEL',
+    currentUser: req.session.email || null,
     controls: controls.electron
   })
 })
