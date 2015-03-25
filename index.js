@@ -1,3 +1,4 @@
+var newrelic = require('newrelic')
 // Express
 var fs = require('fs')
 var express = require('express')
@@ -69,6 +70,9 @@ app.use(autoprefixer({
 
 // Static files
 app.use(express.static(path.join(__dirname, 'public')))
+
+// Browser monitoring
+app.locals.newrelic = newrelic
 
 // Routes
 app.use('/', routes)
