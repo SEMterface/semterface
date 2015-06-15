@@ -11,4 +11,4 @@ This is the home for a web based interface for the Jeol JXA-6400 SEM at PSU.
 
 ### Citations
 - [WebRTC Camp 2013](http://2013.webrtccamp.com)
-- [#160: Ampersand.js, SPAs, and WebRTC with Henrik Joreteg](https://changelog.com/160/)(@ 1:02:05)
+- [#160: Ampersand.js, SPAs, and WebRTC with Henrik Joreteg](https://changelog.com/160/) (1:02:05)
