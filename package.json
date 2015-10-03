@@ -1,0 +1,36 @@
+{
+  "name": "bserve",
+  "version": "1.0.0",
+  "description": "HTTP, HTML, PostCSS and Browserify",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bret Comnes",
+  "license": "ISC",
+  "devDependencies": {
+    "standard": "^5.3.1",
+    "standard-format": "^1.6.7",
+    "tap-spec": "^4.1.0",
+    "tape": "^4.2.1"
+  },
+  "dependencies": {
+    "cliclopts": "^1.1.1",
+    "minimist": "^1.2.0",
+    "autoprefixer": "^6.0.3",
+    "browserify": "^11.2.0",
+    "http-server": "^0.8.5",
+    "postcss-cli": "^2.1.0",
+    "watchify": "^3.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/bcomnes/node-bserve.git"
+  },
+  "keywords": [
+    "HTML",
+    "HTTP",
+    "PostCSS",
+    "Browserify"
+  ]
+}
