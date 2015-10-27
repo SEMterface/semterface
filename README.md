@@ -1,2 +1,3 @@
-# node-bserve
-HTML, PostCSS and Browserify
+# @bret-dserv
+
+budo, browserify, babelify, react, autoprefixer, jsnox, redux, css-modulesify 
