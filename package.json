@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "budo index.js:dist/bundle.js --dir static --dir dist --live --open -- -p [ css-modulesify --after autoprefixer -o dist/main.css ] |  garnish"
+    "start": "budo index.js:bundle.js --dir static --dir dist --live --open -- -p [ css-modulesify --after autoprefixer -o dist/main.css ] |  garnish"
   },
   "author": "Bret Comnes",
   "license": "ISC",
@@ -43,5 +43,8 @@
     "HTTP",
     "PostCSS",
     "Browserify"
-  ]
+  ],
+  "jshintConfig": {
+
+  }
 }

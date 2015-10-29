@@ -2,17 +2,23 @@ var React = require('react')
 var d = require('jsnox')(React)
 var ReactDOM = require('react-dom')
 
-var styles = require('./css/main.css')
+var Header = require('./components/Header')
+var Scope = require('./components/Scope')
+var Footer = require('./components/Footer')
 
-// tutorial1.js
-var CommentBox = React.createClass({
-  render: function () {
-    return (
-      d(`div.commentBox.${styles.test}^`, {}, 'Beep, world! I am a commentbox.')
+var styles = require('./index.css')
+
+var Semterface = React.createClass({
+  render: function render () {
+    return d('main.semterface',
+      d(Header),
+      d(Scope),
+      d(Footer)
     )
   }
 })
+
 ReactDOM.render(
-  d(CommentBox),
+  d(Semterface),
   document.getElementById('content')
 )
