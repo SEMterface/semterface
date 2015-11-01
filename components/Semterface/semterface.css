@@ -1,0 +1,12 @@
+.semterface {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: hsl(219, 13.5%, 71.0%);
+  background-color: hsl(220, 13.0%, 18.0%);
+  box-sizing: border-box;
+  overflow: hidden;
+  composes: stdBorder from "../lib/common.css";
+}
