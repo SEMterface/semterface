@@ -1,0 +1,16 @@
+@value colors: "../lib/colors.css";
+@value well, border from colors;
+
+.scope {
+  flex-grow: 1;
+  height: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  box-sizing: border-box;
+}
+
+.mainDisplay {
+  flex-grow: 1;
+  box-sizing: border-box;
+}

@@ -1,8 +1,15 @@
+@value common: "../lib/common.css";
+@value colors: "../lib/colors.css";
+@value primary, border from colors;
+
 .header {
+  border-bottom: 1px solid border;
+  box-sizing: border-box;
+  composes: ends from common;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-image: linear-gradient( hsla(0,0%,100%,.05), hsla(0,0%,100%,0) );
+  background-image: linear-gradient( hsla(0,0%,100%,0.05), hsla(0,0%,100%,0), hsla(0,0%,100%,0.05) );
 }
 
 .header h1 {

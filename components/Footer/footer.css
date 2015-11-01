@@ -1,5 +1,13 @@
+@value common: "../lib/common.css";
+@value colors: "../lib/colors.css";
+@value border from colors;
+
 .footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-sizing: border-box;
+  border-top: 1px solid border;
+  composes: ends from common;
+  background-image: linear-gradient( hsla(0,0%,100%,0.05), hsla(0,0%,100%,0), hsla(0,0%,100%,0.05) );
 }

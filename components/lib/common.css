@@ -1,3 +1,12 @@
+@value colors: "./colors.css";
+@value border from colors;
+
 .stdBorder {
-  border: 1.5px solid hsla(228, 11.6279%, 8.4314%, 1.0000);
+  border: 1px solid border;
+}
+
+.ends {
+  height: 3em;
+  box-sizing: border-box;
+  padding: 0em 1em;
 }

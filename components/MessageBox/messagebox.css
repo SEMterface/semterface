@@ -1,0 +1,8 @@
+@value colors: "../lib/colors.css";
+@value well from colors;
+
+.messagebox {
+  background-color: well;
+  height: 200px;
+  width: 200px;
+}

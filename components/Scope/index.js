@@ -5,11 +5,15 @@ var Video = require('../Video')
 var MessageBox = require('../MessageBox')
 var Controls = require('../Controls')
 
+var style = require('./scope.css')
+
 var Scope = React.createClass({
   render: function render () {
-    return d('div.scope',
-      d('div', d(Video), d(MessageBox)),
-      d(Controls))
+    return d('div.scope', {className: style.scope},
+      d('div', {className: style.mainDisplay },
+        d(Video), d(MessageBox)),
+      d(Controls)
+    )
   }
 })
 

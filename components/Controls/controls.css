@@ -1,0 +1,9 @@
+@value colors: "../lib/colors.css";
+@value well, border from colors;
+
+.controls {
+  width: 15em;
+  background-color: well;
+  border-left: 1px solid border;
+  box-sizing: border-box;
+}

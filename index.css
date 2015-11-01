@@ -6,10 +6,6 @@ body {
   margin: 0;
 }
 
-.fillWindow {
-  height: 100vh
-}
-
 :global #content {
   height: 100vh
 }
