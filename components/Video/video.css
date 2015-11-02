@@ -1,5 +1,5 @@
 .video {
   height: 200px;
-  width: 200px;
   background: grey;
+  min-height: 200px;
 }

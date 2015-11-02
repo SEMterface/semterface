@@ -2,7 +2,9 @@
 @value well from colors;
 
 .messagebox {
+  margin: 1em;
   background-color: well;
-  height: 200px;
-  width: 200px;
+  flex-grow: 1;
+  font-family: menlo, monaco, consolas, monospace;
+  overflow: scroll;
 }

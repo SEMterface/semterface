@@ -6,4 +6,5 @@
   background-color: well;
   border-left: 1px solid border;
   box-sizing: border-box;
+  overflow: scroll;
 }

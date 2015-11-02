@@ -8,7 +8,6 @@
   justify-content: space-between;
   height: 100%;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   color: textPlain;
   background-color: background;
   box-sizing: border-box;
