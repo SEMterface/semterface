@@ -13,6 +13,6 @@ ReactDOM.render(
   document.getElementById('content')
 )
 
-var end = document.querySelector('#end')
-console.log(end)
-end.scrollIntoView()
+//var end = document.querySelector('#end')
+//console.log(end)
+//end.scrollIntoView()
