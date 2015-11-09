@@ -17,7 +17,7 @@
   border: 1px solid border;
 }
 
-.control {
+.baseControl {
   border: 1px solid border;
   border-radius: .3em;
   box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
@@ -30,25 +30,25 @@
   align-items: flex-start;
 }
 
-.meterDisplay {
-  display: flex;
-  align-self: stretch;
-}
 
 .meterContainer {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  align-self: stretch;
 }
 
-.meter {
+.meterDisplay {
+  min-height: 3em;
+  display: flex;
+
   background-color: innerWell;
   border: 1px solid border;
   position: relative;
   flex-grow: 1;
 }
 
-.meter-needle {
+.meterNeedle {
   position: absolute;
   height: 100%;
   width: 1px;
@@ -72,13 +72,13 @@
 }
 
 .pv {
-  composes: meter-needle;
+  composes: meterNeedle;
   background-color: #FF410D;
   left: 20%
 }
 
 .sp {
-  composes: meter-needle;
+  composes: meterNeedle;
   left: 10%;
   background-color: #267fb5;
 }
@@ -90,7 +90,7 @@
   margin-top: 5px;
 }
 
-.spRange {
+.rangeStyle {
   composes: rangeSlider;
   box-sizing: border-box;
 }
