@@ -12,7 +12,3 @@ ReactDOM.render(
   d(Semterface),
   document.getElementById('content')
 )
-
-var end = document.querySelector('#end')
-console.log(end)
-end.scrollIntoView()

@@ -13,8 +13,8 @@ var MessageBox = React.createClass({
 
 var MessageList = React.createClass({
   render: function () {
-    var messageNodes = this.props.data.map(function (message) {
-      return d(Message, {type: message.type}, message.text)
+    var messageNodes = this.props.data.map(function (message, index) {
+      return d(Message, {type: message.type, key: index}, message.text)
     })
     return d('div.messageList', messageNodes)
   }
@@ -22,7 +22,7 @@ var MessageList = React.createClass({
 
 var Message = React.createClass({
   render: function () {
-    return (d('div.message',
+    return (d('div.message^',
       d('span.type', this.props.type + ': '),
       this.props.children
     ))

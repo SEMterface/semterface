@@ -1,0 +1,85 @@
+input[type=range].rangeSlider {
+  -webkit-appearance: none;
+  width: 100%;
+  margin: 5px 0;
+}
+input[type=range].rangeSlider:focus {
+  outline: none;
+}
+input[type=range].rangeSlider::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  background: #21252b;
+  border-radius: none;
+  border: 1px solid #131418;
+}
+input[type=range].rangeSlider::-webkit-slider-thumb {
+  box-shadow: 0px 0px 6.9px #49515f, 0px 0px 0px #545d6d;
+  border: 1px solid rgba(19, 20, 24, 0.64);
+  height: 15px;
+  width: 15px;
+  border-radius: 50px;
+  background: #267fb5;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -6px;
+}
+input[type=range].rangeSlider:focus::-webkit-slider-runnable-track {
+  background: #181b20;
+}
+input[type=range].rangeSlider::-moz-range-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  box-shadow: 0px 0px 0.5px #000000, 0px 0px 0px #0d0d0d;
+  background: #21252b;
+  border-radius: 2.7px;
+  border: 1px solid #49515f;
+}
+
+input[type=range].rangeSlider::-moz-range-thumb {
+  box-shadow: 0px 0px 6.9px #49515f, 0px 0px 0px #545d6d;
+  border: 1px solid rgba(19, 20, 24, 0.64);
+  height: 15px;
+  width: 15px;
+  border-radius: 50px;
+  background: #267fb5;
+  cursor: pointer;
+}
+input[type=range].rangeSlider::-ms-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range].rangeSlider::-ms-fill-lower {
+  background: #060708;
+  border: 1px solid #49515f;
+  border-radius: 5.4px;
+  box-shadow: 0px 0px 0.5px #000000, 0px 0px 0px #0d0d0d;
+}
+input[type=range].rangeSlider::-ms-fill-upper {
+  background: #21252b;
+  border: 1px solid #49515f;
+  border-radius: 5.4px;
+  box-shadow: 0px 0px 0.5px #000000, 0px 0px 0px #0d0d0d;
+}
+input[type=range].rangeSlider::-ms-thumb {
+  box-shadow: 0px 0px 6.9px #49515f, 0px 0px 0px #545d6d;
+  border: 1px solid rgba(19, 20, 24, 0.64);
+  height: 15px;
+  width: 15px;
+  border-radius: 50px;
+  background: #267fb5;
+  cursor: pointer;
+  height: 5px;
+}
+input[type=range].rangeSlider:focus::-ms-fill-lower {
+  background: #21252b;
+}
+input[type=range].rangeSlider:focus::-ms-fill-upper {
+  background: #3c434e;
+}

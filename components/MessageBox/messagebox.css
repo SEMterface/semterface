@@ -3,6 +3,7 @@
 
 .messagebox {
   margin: 1em;
+  padding: 0.5em;
   background-color: well;
   flex-grow: 1;
   font-family: menlo, monaco, consolas, monospace;

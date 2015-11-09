@@ -10,7 +10,7 @@
   justify-content: space-between;
   align-items: center;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-  background-image: linear-gradient( hsla(0,0%,100%,0.05), hsla(0,0%,100%,0), hsla(0,0%,100%,0.05) );
+  background-image: linear-gradient(to bottom, #49515f, #373e48 1%, #1f2228 30%, #1f2228 60%, #23272e 99%, #31363f);
 }
 
 .header h1 {

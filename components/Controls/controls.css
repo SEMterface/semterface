@@ -1,10 +1,96 @@
 @value colors: "../lib/colors.css";
-@value well, border from colors;
+@value innerWell, well, textPlain, border from colors;
+@value range: "../lib/rangeInput.css";
+@value rangeSlider from range;
 
 .controls {
-  width: 15em;
+  width: 25em;
+  padding: 0.5em;
   background-color: well;
   border-left: 1px solid border;
   box-sizing: border-box;
   overflow: scroll;
+}
+
+.controls input[type=text] {
+  background-color: innerWell;
+  border: 1px solid border;
+}
+
+.control {
+  border: 1px solid border;
+  border-radius: .3em;
+  box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+  padding: 0.5em;
+  font-family: menlo, monaco, consolas, monospace;
+  font-size: 0.8em;
+  background: linear-gradient(to bottom, #49515f, #2a2f37 1%, #1f2228 30%, #1f2228 60%, #23272e 99%, #31363f); /* W3C */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.meterDisplay {
+  display: flex;
+  align-self: stretch;
+}
+
+.meterContainer {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.meter {
+  background-color: innerWell;
+  border: 1px solid border;
+  position: relative;
+  flex-grow: 1;
+}
+
+.meter-needle {
+  position: absolute;
+  height: 100%;
+  width: 1px;
+}
+
+.numeric {
+  display: flex;
+  flex-direction: column;
+  width: 3em;
+  align-items: center;
+  padding-left: 0.5em;
+}
+
+.numeric input[type=text] {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 2px;
+  color: textPlain;
+  font-size: large;
+  font-family: menlo, monaco, consolas, monospace;
+}
+
+.pv {
+  composes: meter-needle;
+  background-color: #FF410D;
+  left: 20%
+}
+
+.sp {
+  composes: meter-needle;
+  left: 10%;
+  background-color: #267fb5;
+}
+
+.rangeContainer {
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.spRange {
+  composes: rangeSlider;
+  box-sizing: border-box;
 }
