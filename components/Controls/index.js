@@ -11,44 +11,24 @@ var Controls = React.createClass({
   }
 })
 
-var Control = React.createClass({
-  render: function render () {
-    return d('div', {className: style.control},
-      d('div.name', this.props.name),
-      d('div', {className: style.meterDisplay},
-        d('div', {className: style.meterContainer},
-          d('div', {className: style.meter},
-            d('div', {className: style.pv}),
-            d('div', {className: style.sp})
-          ),
-          d('div', {className: style.rangeContainer},
-            d('input[type=range]', {className: style.spRange})
-          )
-        ),
-        d('div', {className: style.numeric},
-          d('label', {htmlFor: 'pv'}, 'pv'),
-          d('input[type=text][readOnly]', {id: 'pv', style: {color: '#FF410D'}}),
-          d('label', {htmlFor: 'sp'}, 'sp'),
-          d('input[type=text]', {id: 'sp', style: {color: '#267fb5'}})
-        )
-      )
-    )
-  }
-})
-
 var SpMeterControl = React.createClass({
   spColor: '#267fb5',
   pvColor: '#FF410D',
   render: function render () {
     return d(BaseControl, {name: this.props.name},
       d('div', {className: style.meterContainer},
-        d(MeterDisplay,
-          d(MeterScale),
-          d(MeterNeedle, {color: this.spColor, key: 'sp', position: 20}),
-          d(MeterNeedle, {color: this.pvColor, key: 'pv', position: 21})
+        d('div', {className: style.meterDisplayColumn},
+          d(MeterDisplay,
+            d(MeterScale),
+            d(MeterNeedle, {color: this.spColor, key: 'sp', position: 20}),
+            d(MeterNeedle, {color: this.pvColor, key: 'pv', position: 21})
+          ),
+          d(RangeInput)
         ),
-        d(TextIndicator, {color: this.spColor, name: 'pv', readOnly: true}),
-        d(TextIndicator, {color: this.pvColor, name: 'sp', readOnly: false})
+        d('div', {className: style.numeric},
+          d(TextIndicator, {color: this.spColor, name: 'pv', readOnly: true}),
+          d(TextIndicator, {color: this.pvColor, name: 'sp', readOnly: false})
+        )
       )
     )
   }
@@ -82,6 +62,7 @@ var MeterScale = React.createClass({
     this.paint(canvas)
   },
   fitToContainer: function fitToContainer (canvas) {
+    // stackoverflow.com/questions/10214873/make-canvas-as-wide-and-as-high-as-parent
     canvas.style.width = '100%'
     canvas.style.height = '100%'
     canvas.width = canvas.offsetWidth
@@ -94,7 +75,7 @@ var MeterScale = React.createClass({
     var scaleDeltaPx = 40
     context.font = '12px menlo, monaco, consolas, monospace'
     context.textBaseline = 'top'
-    context.textAlign = 'left'
+    context.textAlign = 'center'
     context.fillStyle = wellTextColor
     for (var x = scaleDeltaPx + 0.5; x <= c.width; x += scaleDeltaPx) {
       context.moveTo(x, 0)
@@ -110,8 +91,9 @@ var MeterScale = React.createClass({
 
 var TextIndicator = React.createClass({
   render: function render () {
-    return d('label', this.props.name,
-      d('input[type=text]', {
+    return d('label',
+      d('span', this.props.name),
+      d('input:text', {
         readOnly: this.props.readOnly,
         style: {color: this.props.color}
       })
