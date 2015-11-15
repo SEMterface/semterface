@@ -10,10 +10,11 @@ var fakeData = [
 ]
 
 var MessageBox = React.createClass({
-  getInitialState: function() {
-    return {data: []};
+  displayName: 'MessageBox',
+  getInitialState: function () {
+    return {data: []}
   },
-  componentDidMount: function() {
+  componentDidMount: function () {
     this.setState({data: fakeData})
   },
   render: function render () {
@@ -24,6 +25,7 @@ var MessageBox = React.createClass({
 })
 
 var MessageList = React.createClass({
+  displayName: 'MessageList',
   render: function () {
     var messageNodes = this.props.data.map(function (message, i) {
       return d(Message, {type: message.type, key: i}, message.text)
@@ -33,6 +35,7 @@ var MessageList = React.createClass({
 })
 
 var Message = React.createClass({
+  displayName: 'Message',
   render: function () {
     return (d('div.message^',
       d('span.type', this.props.type + ': '),

@@ -8,6 +8,7 @@ var Footer = require('../Footer')
 var styles = require('./semterface.css')
 
 var Semterface = React.createClass({
+  displayName: 'Semterface',
   render: function render () {
     return d('main', {className: styles.semterface},
       d(Header),

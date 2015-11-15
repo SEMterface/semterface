@@ -4,6 +4,8 @@
 @value innerWell: #21252b;
 @value textPlain: #abb2bf;
 @value links: #6494ed;
+@value spColor: #267fb5;
+@value pvColor: #FF410D;
 
 .text-primary {
   color: primary;

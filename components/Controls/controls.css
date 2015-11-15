@@ -1,5 +1,5 @@
 @value colors: "../lib/colors.css";
-@value innerWell, well, textPlain, border from colors;
+@value spColor, pvColor, innerWell, well, textPlain, border from colors;
 @value range: "../lib/rangeInput.css";
 @value rangeSlider from range;
 
@@ -30,7 +30,6 @@
   align-items: flex-start;
 }
 
-
 .meterContainer {
   flex-grow: 1;
   display: flex;
@@ -57,10 +56,12 @@
   position: absolute;
 }
 
+
 .meterNeedle {
   position: absolute;
   height: 100%;
   width: 1px;
+  background-color: textPlain;
 }
 
 .numeric {
