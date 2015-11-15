@@ -41,6 +41,7 @@ var SpMeterControl = React.createClass({
     return d(BaseControl, {name: this.props.name},
       d('div', {className: style.meterContainer},
         d(MeterDisplay,
+          d(MeterScale),
           d(MeterNeedle, {color: '#267fb5', key: 'sp', position: 20}),
           d(MeterNeedle, {color: '#FF410D', key: 'pv', position: 21})
         ),
@@ -63,6 +64,36 @@ var BaseControl = React.createClass({
 var MeterDisplay = React.createClass({
   render: function render () {
     return d('div', {className: style.meterDisplay }, this.props.children)
+  }
+})
+
+var MeterScale = React.createClass({
+  componentDidMount: function componentDidMount () {
+    var canvas = this.getDOMNode()
+    this.fitToContainer(canvas)
+    this.paint(canvas)
+  },
+  fitToContainer: function fitToContainer (canvas) {
+    canvas.style.width = '100%'
+    canvas.style.height = '100%'
+    canvas.width = canvas.offsetWidth
+    canvas.height = canvas.offsetHeight
+  },
+  paint: function paint (c) {
+    var context = c.getContext('2d')
+    for (var x = 10.5; x <= c.width; x += 10) {
+      context.moveTo(x, 0)
+      context.lineTo(x, c.height)
+    }
+    for (var y = 10.5; y <= c.height; y += 10) {
+      context.moveTo(0, y)
+      context.lineTo(c.width, y)
+    }
+    context.strokeStyle = '#eee'
+    context.stroke()
+  },
+  render: function render () {
+    return d('canvas')
   }
 })
 

@@ -41,11 +41,14 @@
 .meterDisplay {
   min-height: 3em;
   display: flex;
-
   background-color: innerWell;
   border: 1px solid border;
   position: relative;
   flex-grow: 1;
+}
+
+.meterDisplay canvas {
+  position: absolute;
 }
 
 .meterNeedle {
