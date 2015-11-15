@@ -37,16 +37,18 @@ var Control = React.createClass({
 })
 
 var SpMeterControl = React.createClass({
+  spColor: '#267fb5',
+  pvColor: '#FF410D',
   render: function render () {
     return d(BaseControl, {name: this.props.name},
       d('div', {className: style.meterContainer},
         d(MeterDisplay,
           d(MeterScale),
-          d(MeterNeedle, {color: '#267fb5', key: 'sp', position: 20}),
-          d(MeterNeedle, {color: '#FF410D', key: 'pv', position: 21})
+          d(MeterNeedle, {color: this.spColor, key: 'sp', position: 20}),
+          d(MeterNeedle, {color: this.pvColor, key: 'pv', position: 21})
         ),
-        d(TextIndicator, {color: '#267fb5', name: 'pv', readOnly: true}),
-        d(TextIndicator, {color: '#FF410D', name: 'sp', readOnly: false})
+        d(TextIndicator, {color: this.spColor, name: 'pv', readOnly: true}),
+        d(TextIndicator, {color: this.pvColor, name: 'sp', readOnly: false})
       )
     )
   }
@@ -68,8 +70,14 @@ var MeterDisplay = React.createClass({
 })
 
 var MeterScale = React.createClass({
+  render: function render () {
+    var self = this
+    return d('canvas', {ref: function ref (canvas) {
+        self.canvas = canvas
+    }})
+  },
   componentDidMount: function componentDidMount () {
-    var canvas = this.getDOMNode()
+    var canvas = this.canvas
     this.fitToContainer(canvas)
     this.paint(canvas)
   },
@@ -81,26 +89,26 @@ var MeterScale = React.createClass({
   },
   paint: function paint (c) {
     var context = c.getContext('2d')
-    for (var x = 10.5; x <= c.width; x += 10) {
+    var scalePx = 5
+    var scaleDeltaPx = 40
+    for (var x = scaleDeltaPx + 0.5; x <= c.width; x += scaleDeltaPx) {
       context.moveTo(x, 0)
+      context.lineTo(x, scalePx)
+      context.moveTo(x, c.height - scalePx),
       context.lineTo(x, c.height)
     }
-    for (var y = 10.5; y <= c.height; y += 10) {
-      context.moveTo(0, y)
-      context.lineTo(c.width, y)
-    }
-    context.strokeStyle = '#eee'
+    context.strokeStyle = '#5e697d'
     context.stroke()
-  },
-  render: function render () {
-    return d('canvas')
   }
 })
 
 var TextIndicator = React.createClass({
   render: function render () {
     return d('label', this.props.name,
-      d('input[type=text]', {readOnly: this.props.readOnly,  style: {color: this.props.color}})
+      d('input[type=text]', {
+        readOnly: this.props.readOnly,
+        style: {color: this.props.color}
+      })
     )
   }
 })
