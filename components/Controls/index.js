@@ -88,16 +88,22 @@ var MeterScale = React.createClass({
     canvas.height = canvas.offsetHeight
   },
   paint: function paint (c) {
+    var wellTextColor = '#5e697d'
     var context = c.getContext('2d')
     var scalePx = 5
     var scaleDeltaPx = 40
+    context.font = '12px menlo, monaco, consolas, monospace'
+    context.textBaseline = 'top'
+    context.textAlign = 'left'
+    context.fillStyle = wellTextColor
     for (var x = scaleDeltaPx + 0.5; x <= c.width; x += scaleDeltaPx) {
       context.moveTo(x, 0)
       context.lineTo(x, scalePx)
+      context.fillText(x - 0.5, x, scalePx + 0.5)
       context.moveTo(x, c.height - scalePx),
       context.lineTo(x, c.height)
     }
-    context.strokeStyle = '#5e697d'
+    context.strokeStyle = wellTextColor
     context.stroke()
   }
 })
