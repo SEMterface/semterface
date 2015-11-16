@@ -45,3 +45,7 @@ var Message = React.createClass({
 })
 
 module.exports = MessageBox
+
+// var end = document.querySelector('#end')
+// console.log(end)
+// end.scrollIntoView()
