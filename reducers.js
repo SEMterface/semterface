@@ -22,7 +22,7 @@ function messages (state, action) {
       newState.push(
         {
           text: action.text,
-          type: action.type
+          msgType: action.msgType
         }
       )
       return newState

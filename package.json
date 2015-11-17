@@ -4,7 +4,7 @@
   "description": "Dev server ingredients",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "tape test/*.js",
     "build": "browserify index.js -p [ css-modulesify --after autoprefixer -o dist/main.css ] -o dist/bundle.js",
     "start": "budo index.js:bundle.js --no-debug --dir static --dir dist --live --open -- -t [ babelify --presets [ ] ] -p [ css-modulesify --after autoprefixer -o dist/main.css ]"
   },
