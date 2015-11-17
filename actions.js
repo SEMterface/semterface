@@ -6,11 +6,10 @@ const SET_MESSAGE_FILTER = exports.SET_MESSAGE_FILTER = 'SET_MESSAGE_FILTER'
 const MessageFilters = exports.MessageFilters = {
   SHOW_ALL: 'SHOW_ALL',
   SHOW_ERROR: 'SHOW_ERROR',
-  SHOW_STATUS: 'SHOW_STATUS',
-  SHOW_CONTROL: 'SHOW_CONTROL'
+  SHOW_MSG: 'SHOW_MSG',
 }
 
-function addMessage (msgType) {
+function addMessageType (msgType) {
   function msgAdder (text) {
     return {
       type: ADD_MESSAGE,
@@ -21,9 +20,8 @@ function addMessage (msgType) {
   return msgAdder
 }
 
-exports.addError = addMessage('error')
-exports.addStatus = addMessage('status')
-exports.addControl = addMessage('control')
+exports.addError = addMessageType('error')
+exports.addMsg = addMessageType('msg')
 
 function setMessageFilter (filter) {
   return {
