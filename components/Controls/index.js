@@ -1,12 +1,12 @@
 var React = require('react')
 var d = require('jsnox')(React)
 
-var style = s = require('./controls.css')
+var s = require('./controls.css')
 
 var Controls = React.createClass({
   displayName: 'Controls',
   render: function render () {
-    return d('div', {className: style.controls},
+    return d('div', {className: s.controls},
       d(SpMeterControl, {name: 'SpControl'})
     )
   }
@@ -25,7 +25,7 @@ var SpMeterControl = React.createClass({
           ),
           d(RangeInput)
         ),
-        d('div', {className: style.numeric},
+        d('div', {className: s.numeric},
           d(TextIndicator, {name: 'pv', readOnly: true}),
           d(TextIndicator, {name: 'sp', readOnly: false})
         )
@@ -37,7 +37,7 @@ var SpMeterControl = React.createClass({
 var BaseControl = React.createClass({
   displayName: 'BaseControl',
   render: function render () {
-    return d('div', {className: style.baseControl},
+    return d('div', {className: s.baseControl},
       d('div.name', this.props.name),
       this.props.children
     )
@@ -47,7 +47,7 @@ var BaseControl = React.createClass({
 var MeterDisplay = React.createClass({
   displayName: 'meterDisplay',
   render: function render () {
-    return d('div', {className: style.meterDisplay }, this.props.children)
+    return d('div', {className: s.meterDisplay }, this.props.children)
   }
 })
 
@@ -108,9 +108,9 @@ var TextIndicator = React.createClass({
 var RangeInput = React.createClass({
   displayName: 'RangeInput',
   render: function render () {
-    return d('div', {className: style.rangeContainer},
+    return d('div', {className: s.rangeContainer},
       d('input[type=range]', {
-        className: style.rangeStyle,
+        className: s.rangeStyle,
         value: this.props.value,
         min: this.props.min,
         max: this.props.max,
@@ -138,7 +138,7 @@ var MeterNeedle = React.createClass({
   displayName: 'MeterNeedle',
   render: function render () {
     return d('div', {
-      className: style.meterNeedle,
+      className: s.meterNeedle,
       style: {
         backgroundColor: this.props.color,
         left: this.props.position + '%'

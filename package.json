@@ -5,11 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "budo index.js:bundle.js --dir static --dir dist --live --open -- -p [ css-modulesify --after autoprefixer -o dist/main.css ]"
+    "build": "browserify index.js -p [ css-modulesify --after autoprefixer -o dist/main.css ] -o dist/bundle.js",
+    "start": "budo index.js:bundle.js --no-debug --dir static --dir dist --live --open -- -t [ babelify --presets [ ] ] -p [ css-modulesify --after autoprefixer -o dist/main.css ]"
   },
   "author": "Bret Comnes",
   "license": "ISC",
   "devDependencies": {
+    "babel-preset-es2015": "^6.1.18",
+    "babel-preset-react": "^6.1.18",
     "babelify": "^7.2.0",
     "redux-devtools": "^2.1.5",
     "standard": "^5.3.1",
@@ -33,9 +36,6 @@
     "react-redux": "^4.0.0",
     "redux": "^3.0.4",
     "watchify": "^3.4.0"
-  },
-  "browserify": {
-    "transform": []
   },
   "repository": {
     "type": "git",
