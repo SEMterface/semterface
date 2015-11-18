@@ -6,7 +6,7 @@
   "scripts": {
     "test": "tape test/*.js",
     "build": "browserify index.js -p [ css-modulesify --after autoprefixer -o dist/main.css ] -o dist/bundle.js",
-    "start": "budo index.js:bundle.js --no-debug --dir static --dir dist --live --open -- -t [ babelify --presets [ ] ] -p [ css-modulesify --after autoprefixer -o dist/main.css ]"
+    "start": "budo index.js:bundle.js --dir static --dir dist --live --open -- -t [ babelify --presets [ es2015 react ] ] -p [ css-modulesify --after autoprefixer -o dist/main.css ]"
   },
   "author": "Bret Comnes",
   "license": "ISC",
