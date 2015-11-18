@@ -12,7 +12,11 @@ var Scope = React.createClass({
   render: function render () {
     return d('div.scope', {className: style.scope},
       d('div', {className: style.mainDisplay },
-        d(Video), d(MessageBox)),
+        d(Video),
+        d(MessageBox, {
+          messages: this.props.messages,
+          messageFilter: this.props.messages
+        })),
       d(Controls)
     )
   }

@@ -3,7 +3,6 @@
 var combineReducers = require('redux').combineReducers
 var actions = require('./actions')
 var MessageFilters = actions.MessageFilters
-var truthy = require('@bret/truthy')
 
 function messageFilter (state, action) {
   switch (action.type) {
@@ -15,8 +14,15 @@ function messageFilter (state, action) {
   }
 }
 
+var fakeData = [
+  {msgType: 'msg', text: 'status message'},
+  {msgType: 'error', text: 'error message'},
+  {msgType: 'msg', text: 'beep'},
+  {msgType: 'error', text: 'error two'}
+]
+
 function messages (state, action) {
-  var newState = Array.isArray(state) ? state.slice() : []
+  var newState = Array.isArray(state) ? state.slice() : fakeData
   switch (action.type) {
     case actions.ADD_MESSAGE:
       newState.push(

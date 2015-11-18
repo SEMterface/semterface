@@ -3,23 +3,12 @@ var d = require('jsnox')(React)
 
 var style = require('./messagebox.css')
 
-var fakeData = [
-  {type: 'status', text: 'status message'},
-  {type: 'error', text: 'error message'},
-  {type: 'control', text: 'beep'}
-]
-
 var MessageBox = React.createClass({
   displayName: 'MessageBox',
-  getInitialState: function () {
-    return {data: []}
-  },
-  componentDidMount: function () {
-    this.setState({data: fakeData})
-  },
   render: function render () {
+    console.log(this.props)
     return d('div', {className: style.messagebox},
-      d(MessageList, {data: this.state.data})
+      d(MessageList, {data: this.props.messages})
     )
   }
 })
