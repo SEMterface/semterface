@@ -23,10 +23,12 @@ function selectMessages (messages, filter) {
 }
 
 function select (state) {
-  return {
+  var newState = {
     visibleMessages: selectMessages(state.messages, state.messageFilter),
-    messageFilter: state.messageFilter
+    messageFilter: state.messageFilter,
+    systemStatus: state.systemStatus
   }
+  return newState
 }
 
 module.exports = connect(select)(Semterface)

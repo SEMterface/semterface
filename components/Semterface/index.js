@@ -16,10 +16,12 @@ var Semterface = React.createClass({
     return d('main', {className: s.semterface},
       d(Header),
       d(Scope, {
-        messages: this.props.messages,
-        messageFilter: this.props.messages
+        messages: this.props.visibleMessages,
+        messageFilter: this.props.messageFilter
       }),
-      d(Footer)
+      d(Footer, {
+        status: this.props.systemStatus
+      })
     )
   }
 })

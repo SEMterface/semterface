@@ -7,7 +7,7 @@ var Footer = React.createClass({
   displayName: 'Footer',
   render: function render () {
     return d('footer', {className: style.footer },
-      d('div.vitals', 'Status: '),
+      d('div.vitals', 'Status: ' + this.props.status),
       d('div.info',
         d('a', {href: 'https://github.com/SEMterface'}, 'Github')
       )
