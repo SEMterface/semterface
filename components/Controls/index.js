@@ -22,7 +22,6 @@ function generateControls (ctlArray, scopeProps, setRangeSp) {
   })
 
   function generateControl (ctl) {
-    console.log(ctl)
     return d(ctlMap[ctl.type], assign({}, ctl, scopeProps[ctl.key], {id: ctl.key, setRangeSp: setRangeSp}))
   }
   return available.map(generateControl)
@@ -36,7 +35,6 @@ var Range = React.createClass({
       max: this.props.max,
       step: this.props.step
     }
-    console.log(this.props)
     return d(BaseControl, {name: this.props.name},
       d('div', {className: s.meterContainer},
         d('div', {className: s.meterDisplayColumn},
@@ -113,6 +111,7 @@ Meter.Scale = React.createClass({
     canvas.height = canvas.offsetHeight
   },
   paint: function paint (c) {
+    var self = this
     var wellTextColor = '#5e697d'
     var context = c.getContext('2d')
     var scalePx = 5
@@ -126,7 +125,7 @@ Meter.Scale = React.createClass({
     var scale = c.width / difference // pixel per unit
     var deltaPx = Math.round(scale * steps) // pixels per step
     function generateLabel (x) {
-      return (Math.floor(x * Math.pow(scale, -1))).toPrecision(3)
+      return (Math.floor(x * Math.pow(scale, -1) + self.props.min)).toPrecision(3)
     }
     for (var x = 0.5; x <= c.width; x += deltaPx) {
       context.moveTo(x, 0)
@@ -180,7 +179,7 @@ Meter.Needle = React.createClass({
   render: function render () {
     function getOffset (min, max, value) {
       var mag = max - min
-      var position = (value / mag) * 100
+      var position = ((value - min) / mag) * 100
       return position
     }
     return d('div', {
