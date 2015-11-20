@@ -27,6 +27,8 @@ npm i git://github.com/SEMterface/semterface.git#master --save
 var semterface = require('semterface')
 ```
 
+See ["Connecting to Redux"](http://rackt.org/redux/docs/basics/UsageWithReact.html) and ["Server Rendering"](http://rackt.org/redux/docs/recipes/ServerRendering.html) on the redux site for more inforamtion on importing into a React app container.
+
 ## Citations
 - [WebRTC Camp 2013](http://2013.webrtccamp.com)
 - [#160: Ampersand.js, SPAs, and WebRTC with Henrik Joreteg](https://changelog.com/160/) (1:02:05)
