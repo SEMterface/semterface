@@ -14,9 +14,7 @@ function messageFilter (state, action) {
 
 var defaultMsgs = [
   {msgType: 'msg', text: 'status message'},
-  {msgType: 'error', text: 'error message'},
-  {msgType: 'msg', text: 'beep'},
-  {msgType: 'error', text: 'error two'}
+  {msgType: 'error', text: 'error message'}
 ]
 
 function messages (state, action) {

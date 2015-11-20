@@ -1,6 +1,7 @@
 var React = require('react')
 var d = require('jsnox')(React)
 var serialShape = require('./serialShape')
+var assign = Object.assign
 
 var s = require('./controls.css')
 
@@ -27,17 +28,23 @@ function generateControls (ctlArray) {
 }
 
 var Range = React.createClass({
-  displayName: 'SpMeterControl',
+  displayName: 'Range',
   render: function render () {
+    var scale = {
+      min: this.props.min,
+      max: this.props.max,
+      step: this.props.step
+    }
+    console.log(this.pro)
     return d(BaseControl, {name: this.props.name},
       d('div', {className: s.meterContainer},
         d('div', {className: s.meterDisplayColumn},
           d(Meter,
-            d(Meter.Scale),
-            d(Meter.Needle.Pv, {position: 20}),
-            d(Meter.Needle.Sp, {position: 21})
+            d(Meter.Scale, scale),
+            d(Meter.Needle.Pv, assign({}, scale, {position: 55})),
+            d(Meter.Needle.Sp, assign({}, scale, {position: 20}))
           ),
-          d(RangeInput)
+          d(RangeInput, scale)
         ),
         d('div', {className: s.numeric},
           d(TextIndicator, {name: 'pv', readOnly: true}),
