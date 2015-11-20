@@ -27,6 +27,12 @@ npm i git://github.com/SEMterface/semterface.git#master --save
 var semterface = require('semterface')
 ```
 
+## Citations
+- [WebRTC Camp 2013](http://2013.webrtccamp.com)
+- [#160: Ampersand.js, SPAs, and WebRTC with Henrik Joreteg](https://changelog.com/160/) (1:02:05)
+
+
 ## License
 
 [ISC](LICENSE)
+
