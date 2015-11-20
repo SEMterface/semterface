@@ -10,6 +10,7 @@ var style = require('./scope.css')
 var Scope = React.createClass({
   displayName: 'Scope',
   render: function render () {
+    console.log(this.props)
     return d('div.scope', {className: style.scope},
       d('div', {className: style.mainDisplay },
         d(Video),
@@ -18,7 +19,8 @@ var Scope = React.createClass({
           messageFilter: this.props.messages
         })),
       d(Controls, {
-        scope: this.props.scope
+        scope: this.props.scope,
+        setRangeSp: this.props.setRangeSp
       })
     )
   }

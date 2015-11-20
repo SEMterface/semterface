@@ -53,15 +53,21 @@ function generateDefaultSp (ctlArray) {
   usable.forEach(function (ctl) {
     defaults[ctl.key] = {}
     defaults[ctl.key].sp = ctl.sp
+    defaults[ctl.key].pv = ctl.pv
   })
   return defaults
 }
 
 function scope (state, action) {
+  var newState
   switch (action.type) {
     case 'SET_RANGE_SP':
-      var newState = assign({}, state)
+      newState = assign({}, state)
       newState[action.key].sp = action.sp
+      return newState
+    case 'SET_RANGE_PV':
+      newState = assign({}, state)
+      newState[action.key].pv = action.pv
       return newState
     default:
       var defaultState = state || generateDefaultSp(serialShape)

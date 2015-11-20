@@ -43,4 +43,13 @@ function setRangeSp (key, value) {
     sp: value
   }
 }
-exports.setRange = setRangeSp
+exports.setRangeSp = setRangeSp
+
+function setRangePv (key, value) {
+  return {
+    type: 'SET_RANGE_PV',
+    key: key,
+    value: value
+  }
+}
+exports.setRangePv = setRangePv

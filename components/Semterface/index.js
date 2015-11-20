@@ -13,12 +13,16 @@ var s = require('./semterface.css')
 var Semterface = React.createClass({
   displayName: 'Semterface',
   render: function render () {
+    var dispatch = this.props.dispatch
     return d('main', {className: s.semterface},
       d(Header),
       d(Scope, {
         messages: this.props.visibleMessages,
         messageFilter: this.props.messageFilter,
-        scope: this.props.scope
+        scope: this.props.scope,
+        setRangeSp: function setRangeSp (key, value) {
+          dispatch(actions.setRangeSp(key, value))
+        }
       }),
       d(Footer, {
         status: this.props.systemStatus
@@ -35,7 +39,8 @@ Semterface.propTypes = {
       'error'
     ]).isRequired
   })),
-  messageFilter: PropTypes.oneOf(Object.keys(MessageFilters)).isRequired
+  messageFilter: PropTypes.oneOf(Object.keys(MessageFilters)).isRequired,
+  systemStatus: PropTypes.string.isRequired
 }
 
 module.exports = Semterface
