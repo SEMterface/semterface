@@ -34,3 +34,4 @@ function setSystemStatus (status) {
     status: status
   }
 }
+exports.setSystemStatus = setSystemStatus

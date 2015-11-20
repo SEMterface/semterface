@@ -12,7 +12,7 @@ function messageFilter (state, action) {
   }
 }
 
-var fakeData = [
+var defaultMsgs = [
   {msgType: 'msg', text: 'status message'},
   {msgType: 'error', text: 'error message'},
   {msgType: 'msg', text: 'beep'},
@@ -20,7 +20,7 @@ var fakeData = [
 ]
 
 function messages (state, action) {
-  var newState = Array.isArray(state) ? state.slice() : fakeData
+  var newState = Array.isArray(state) ? state.slice() : defaultMsgs
   switch (action.type) {
     case 'ADD_MESSAGE':
       newState.push(
@@ -38,7 +38,7 @@ function messages (state, action) {
 function systemStatus (state, action) {
   switch (action.type) {
     case 'SET_SYSTEM_STATUS':
-      return action.filter
+      return action.status
     default:
       return 'Offline'
   }
@@ -51,3 +51,4 @@ const semterfaceApp = combineReducers({
 })
 
 module.exports = semterfaceApp
+module.exports.defaultMsgs = defaultMsgs

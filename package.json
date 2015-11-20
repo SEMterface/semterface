@@ -4,7 +4,7 @@
   "description": "Dev server ingredients",
   "main": "index.js",
   "scripts": {
-    "test": "tape test/*.js",
+    "test": "tape test/*.js | tap-spec",
     "build": "browserify index.js -p [ css-modulesify --after autoprefixer -o dist/main.css ] -o dist/bundle.js",
     "start": "budo index.js:bundle.js --dir static --dir dist --live --open -- -t [ babelify --presets [ es2015 react ] ] -p [ css-modulesify --after autoprefixer -o dist/main.css ]"
   },
