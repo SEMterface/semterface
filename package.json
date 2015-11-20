@@ -1,5 +1,5 @@
 {
-  "name": "@bret/dserv",
+  "name": "semterface",
   "version": "1.0.0",
   "description": "Dev server ingredients",
   "main": "index.js",
