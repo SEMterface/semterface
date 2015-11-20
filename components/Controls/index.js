@@ -18,10 +18,10 @@ var SpMeterControl = React.createClass({
     return d(BaseControl, {name: this.props.name},
       d('div', {className: s.meterContainer},
         d('div', {className: s.meterDisplayColumn},
-          d(MeterDisplay,
-            d(MeterScale),
-            d(PvMeterNeedle, {position: 20}),
-            d(SpMeterNeedle, {position: 21})
+          d(Meter,
+            d(Meter.Scale),
+            d(Meter.Needle.Pv, {position: 20}),
+            d(Meter.Needle.Sp, {position: 21})
           ),
           d(RangeInput)
         ),
@@ -44,20 +44,18 @@ var BaseControl = React.createClass({
   }
 })
 
-var MeterDisplay = React.createClass({
-  displayName: 'meterDisplay',
+var Meter = React.createClass({
+  displayName: 'Meter',
   render: function render () {
     return d('div', {className: s.meterDisplay }, this.props.children)
   }
 })
 
-var MeterScale = React.createClass({
-  displayName: 'MeterScale',
+Meter.Scale = React.createClass({
+  displayName: 'Meter.Scale',
   render: function render () {
     var self = this
-    return d('canvas', {ref: function ref (canvas) {
-        self.canvas = canvas
-    }})
+    return d('canvas', {ref: function ref (canvas) { self.canvas = canvas }})
   },
   componentDidMount: function componentDidMount () {
     var canvas = this.canvas
@@ -120,22 +118,8 @@ var RangeInput = React.createClass({
   }
 })
 
-var PvMeterNeedle = React.createClass({
-  displayName: 'PvMeterNeedle',
-  render: function render () {
-    return d(MeterNeedle, {color: s.pvColor, position: this.props.position})
-  }
-})
-
-var SpMeterNeedle = React.createClass({
-  displayName: 'SpMeterNeedle',
-  render: function render () {
-    return d(MeterNeedle, {color: s.spColor, position: this.props.position})
-  }
-})
-
-var MeterNeedle = React.createClass({
-  displayName: 'MeterNeedle',
+Meter.Needle = React.createClass({
+  displayName: 'Meter.Needle',
   render: function render () {
     return d('div', {
       className: s.meterNeedle,
@@ -144,6 +128,20 @@ var MeterNeedle = React.createClass({
         left: this.props.position + '%'
       }
     })
+  }
+})
+
+Meter.Needle.Pv = React.createClass({
+  displayName: 'MeterNeedle.Pv',
+  render: function render () {
+    return d(Meter.Needle, {color: s.pvColor, position: this.props.position})
+  }
+})
+
+Meter.Needle.Sp = React.createClass({
+  displayName: 'Meter.Needle.Sp',
+  render: function render () {
+    return d(Meter.Needle, {color: s.spColor, position: this.props.position})
   }
 })
 

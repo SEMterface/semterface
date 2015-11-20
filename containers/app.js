@@ -32,3 +32,4 @@ function select (state) {
 }
 
 module.exports = connect(select)(Semterface)
+module.exports.style = containerStyle

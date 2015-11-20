@@ -3,7 +3,7 @@
 const MessageFilters = exports.MessageFilters = {
   SHOW_ALL: 'SHOW_ALL',
   SHOW_ERROR: 'SHOW_ERROR',
-  SHOW_MSG: 'SHOW_MSG',
+  SHOW_MSG: 'SHOW_MSG'
 }
 
 function addMessageType (msgType) {

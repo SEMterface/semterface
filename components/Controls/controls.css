@@ -50,12 +50,12 @@
   border: 1px solid border;
   position: relative;
   flex-grow: 1;
+  margin-top: 0.5em;
 }
 
 .meterDisplay canvas {
   position: absolute;
 }
-
 
 .meterNeedle {
   position: absolute;
@@ -97,7 +97,7 @@
   align-self: stretch;
   display: flex;
   align-items: center;
-  margin-top: 5px;
+  margin-top: 0.5em;
 }
 
 .rangeStyle {
