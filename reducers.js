@@ -1,6 +1,8 @@
 var combineReducers = require('redux').combineReducers
 var actions = require('./actions')
 var MessageFilters = actions.MessageFilters
+var assign = Object.assign
+var serialShape = require('./components/Controls/serialShape')
 
 function messageFilter (state, action) {
   switch (action.type) {
@@ -42,10 +44,36 @@ function systemStatus (state, action) {
   }
 }
 
+function generateDefaultSp (ctlArray) {
+  var usable = ctlArray.filter(function (ctl) {
+    // TODO Make this more robust
+    return ctl.type === 'range'
+  })
+  var defaults = {}
+  usable.forEach(function (ctl) {
+    defaults[ctl.key] = {}
+    defaults[ctl.key].sp = ctl.sp
+  })
+  return defaults
+}
+
+function scope (state, action) {
+  switch (action.type) {
+    case 'SET_RANGE_SP':
+      var newState = assign({}, state)
+      newState[action.key].sp = action.sp
+      return newState
+    default:
+      var defaultState = state || generateDefaultSp(serialShape)
+      return defaultState
+  }
+}
+
 const semterfaceApp = combineReducers({
   messages: messages,
   messageFilter: messageFilter,
-  systemStatus: systemStatus
+  systemStatus: systemStatus,
+  scope: scope
 })
 
 module.exports = semterfaceApp

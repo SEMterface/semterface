@@ -8,6 +8,7 @@ module.exports = [
     min: 0.0,
     max: 30.0,
     step: 0.1,
+    sp: 1.0,
     maxStep: '500v/s',
     desc: 'Accelerating voltage'
   },
@@ -59,6 +60,7 @@ module.exports = [
     min: 1,
     max: 10,
     step: 1,
+    sp: 4,
     desc: 'Reads and writes the condenser lense coarse-adjustment'
   },
   {
@@ -70,6 +72,7 @@ module.exports = [
     min: 0,
     max: 255,
     step: 1,
+    sp: 10,
     desc: 'Reads and writes the condenser lense fine-adjustment'
   },
   {
@@ -91,6 +94,7 @@ module.exports = [
     min: 0,
     max: 255,
     step: 1,
+    sp: 50,
     desc: 'Reads/writes objective lense coarse adjustment'
   },
   {
@@ -102,6 +106,7 @@ module.exports = [
     min: 0,
     max: 4095,
     step: 1,
+    sp: 100,
     desc: 'Reads/writes objective lense fine adjustment'
   },
   {
@@ -113,6 +118,7 @@ module.exports = [
     min: 10,
     max: 500000,
     step: 100,
+    sp: 1000,
     desc: 'Reads/Writes the magnification level'
   }
 ]

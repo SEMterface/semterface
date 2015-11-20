@@ -17,7 +17,8 @@ var Semterface = React.createClass({
       d(Header),
       d(Scope, {
         messages: this.props.visibleMessages,
-        messageFilter: this.props.messageFilter
+        messageFilter: this.props.messageFilter,
+        scope: this.props.scope
       }),
       d(Footer, {
         status: this.props.systemStatus

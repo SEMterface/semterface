@@ -17,7 +17,9 @@ var Scope = React.createClass({
           messages: this.props.messages,
           messageFilter: this.props.messages
         })),
-      d(Controls)
+      d(Controls, {
+        scope: this.props.scope
+      })
     )
   }
 })

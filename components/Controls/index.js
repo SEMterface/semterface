@@ -94,16 +94,23 @@ Meter.Scale = React.createClass({
     var wellTextColor = '#5e697d'
     var context = c.getContext('2d')
     var scalePx = 5
-    var scaleDeltaPx = 40
     context.font = '12px menlo, monaco, consolas, monospace'
     context.textBaseline = 'top'
-    context.textAlign = 'center'
+    context.textAlign = 'left'
     context.fillStyle = wellTextColor
-    for (var x = scaleDeltaPx + 0.5; x <= c.width; x += scaleDeltaPx) {
+    var difference = this.props.max - this.props.min // total units
+    var desiredTicks = 5
+    var steps = Math.round(difference / desiredTicks) // unit steps
+    var scale = c.width / difference // pixel per unit
+    var deltaPx = Math.round(scale * steps) // pixels per step
+    function generateLabel (x) {
+      return (x * Math.pow(scale, -1)).toPrecision(3)
+    }
+    for (var x = 0.5; x <= c.width; x += deltaPx) {
       context.moveTo(x, 0)
       context.lineTo(x, scalePx)
-      context.fillText(x - 0.5, x, scalePx + 0.5)
-      context.moveTo(x, c.height - scalePx),
+      context.fillText(generateLabel(x), x, scalePx + 0.5)
+      context.moveTo(x, c.height - scalePx)
       context.lineTo(x, c.height)
     }
     context.strokeStyle = wellTextColor

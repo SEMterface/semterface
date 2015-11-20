@@ -7,6 +7,7 @@ var MessageFilters = actions.MessageFilters
 test('messageFilter reducer', function (t) {
   t.plan(4)
   var i = reducers(undefined, {})
+  console.log(i)
   t.ok(Array.isArray(i.messages), 'messages is an array')
   t.equal(i.messages.length, defaultMsgs.length, 'messages is an array of length 0')
   t.equal(i.messageFilter, MessageFilters.SHOW_ALL, 'has correct default message filter')

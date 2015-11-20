@@ -35,3 +35,12 @@ function setSystemStatus (status) {
   }
 }
 exports.setSystemStatus = setSystemStatus
+
+function setRangeSp (key, value) {
+  return {
+    type: 'SET_RANGE_SP',
+    key: key,
+    sp: value
+  }
+}
+exports.setRange = setRangeSp

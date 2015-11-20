@@ -26,7 +26,8 @@ function select (state) {
   var newState = {
     visibleMessages: selectMessages(state.messages, state.messageFilter),
     messageFilter: state.messageFilter,
-    systemStatus: state.systemStatus
+    systemStatus: state.systemStatus,
+    scope: state.scope
   }
   return newState
 }
