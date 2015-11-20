@@ -1,6 +1,6 @@
-exports.electron = [
+module.exports = [
   {
-    code: 'ACC',
+    key: 'ACC',
     name: 'Accel. Voltage',
     read: true,
     write: true,
@@ -12,7 +12,7 @@ exports.electron = [
     desc: 'Accelerating voltage'
   },
   {
-    code: 'ACCS',
+    key: 'ACCS',
     name: 'Accel. Volt. Status',
     type: 'button',
     read: {
@@ -41,17 +41,17 @@ exports.electron = [
     write: {
       on: {
         desc: 'turn the accelerating voltage on',
-        code: 'ON'
+        key: 'ON'
       },
       off: {
         desc: 'turn the accelerating voltage off',
-        code: 'OFF'
+        key: 'OFF'
       }
     },
     desc: 'Accelerating voltage status'
   },
   {
-    code: 'CC',
+    key: 'CC',
     name: 'Condenser Coarse',
     read: true,
     write: true,
@@ -62,7 +62,7 @@ exports.electron = [
     desc: 'Reads and writes the condenser lense coarse-adjustment'
   },
   {
-    code: 'CF',
+    key: 'CF',
     name: 'Condenser Fine',
     read: true,
     write: true,
@@ -73,7 +73,7 @@ exports.electron = [
     desc: 'Reads and writes the condenser lense fine-adjustment'
   },
   {
-    code: 'EMIS',
+    key: 'EMIS',
     name: 'Emission current (µA)',
     read: true,
     write: false,
@@ -83,7 +83,7 @@ exports.electron = [
     desc: 'Reads the emission current in µA'
   },
   {
-    code: 'OC',
+    key: 'OC',
     name: 'Objective Coarse',
     read: true,
     write: true,
@@ -94,7 +94,7 @@ exports.electron = [
     desc: 'Reads/writes objective lense coarse adjustment'
   },
   {
-    code: 'OF',
+    key: 'OF',
     name: 'Objective Fine',
     read: true,
     write: true,
@@ -105,7 +105,7 @@ exports.electron = [
     desc: 'Reads/writes objective lense fine adjustment'
   },
   {
-    code: 'MG',
+    key: 'MG',
     name: 'Magnification',
     read: true,
     write: true,

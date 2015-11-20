@@ -1,18 +1,32 @@
 var React = require('react')
 var d = require('jsnox')(React)
+var serialShape = require('./serialShape')
 
 var s = require('./controls.css')
 
 var Controls = React.createClass({
   displayName: 'Controls',
   render: function render () {
-    return d('div', {className: s.controls},
-      d(SpMeterControl, {name: 'SpControl'})
-    )
+    return d('div', {className: s.controls}, generateControls(serialShape))
   }
 })
 
-var SpMeterControl = React.createClass({
+function generateControls (ctlArray) {
+  var ctlMap = {
+    range: Range
+  }
+
+  var available = ctlArray.filter(function (ctl) {
+    return ctlMap.hasOwnProperty(ctl.type)
+  })
+
+  function generateControl (ctl) {
+    return d(ctlMap[ctl.type], ctl)
+  }
+  return available.map(generateControl)
+}
+
+var Range = React.createClass({
   displayName: 'SpMeterControl',
   render: function render () {
     return d(BaseControl, {name: this.props.name},
