@@ -2,6 +2,7 @@
 
 [![npm][npm-image]][npm-url]
 [![travis][travis-image]][travis-url]
+[![david][david-image]][david-url]
 [![standard][standard-image]][standard-url]
 
 [npm-image]: https://img.shields.io/npm/v/semterface.svg?style=flat-square
@@ -10,6 +11,8 @@
 [travis-url]: https://travis-ci.org/bcomnes/semterface
 [standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square
 [standard-url]: http://npm.im/standard
+[david-image]: https://img.shields.io/david/bcomnes/semterface.svg?style=flat-square
+[david-url]: https://david-dm.org/SEMterface/semterface
 
 An interface for viewing and manipulating scanning electron microscopes.
 
@@ -37,4 +40,3 @@ See ["Connecting to Redux"](http://rackt.org/redux/docs/basics/UsageWithReact.ht
 ## License
 
 [ISC](LICENSE)
-
