@@ -28,19 +28,18 @@ var Semterface = React.createClass({
         status: this.props.systemStatus
       })
     )
+  },
+  propTypes: {
+    visibleMessages: PropTypes.arrayOf(PropTypes.shape({
+      text: PropTypes.string.isRequired,
+      msgType: PropTypes.oneOf([
+        'msg',
+        'error'
+      ]).isRequired
+    })),
+    messageFilter: PropTypes.oneOf(Object.keys(MessageFilters)).isRequired,
+    systemStatus: PropTypes.string.isRequired
   }
 })
-
-Semterface.propTypes = {
-  visibleMessages: PropTypes.arrayOf(PropTypes.shape({
-    text: PropTypes.string.isRequired,
-    msgType: PropTypes.oneOf([
-      'msg',
-      'error'
-    ]).isRequired
-  })),
-  messageFilter: PropTypes.oneOf(Object.keys(MessageFilters)).isRequired,
-  systemStatus: PropTypes.string.isRequired
-}
 
 module.exports = Semterface

@@ -16,3 +16,6 @@ ReactDOM.render(
   ),
   rootElement
 )
+
+exports.reducer = reducers
+exports.container = Container
