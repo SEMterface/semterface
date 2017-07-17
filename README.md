@@ -26,7 +26,7 @@ npm i git://github.com/SEMterface/semterface.git#master --save
 
 ## Screenshot
 
-![screenshot](./screenshit.png)
+![screenshot](./screenshot.png)
 
 ## Usage
 
